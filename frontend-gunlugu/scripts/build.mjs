@@ -7,11 +7,25 @@ const DESC = 'Next.js, Node.js, React ve React Native için günlük gelişmeler
 const SITE_URL = (process.env.SITE_URL || '').replace(/\/$/, '');
 const CATS = ['Next.js', 'React', 'React Native', 'Node.js', 'Diğer'];
 const SEV = { critical: ['Kritik', 0], high: ['Yüksek', 1], moderate: ['Orta', 2], low: ['Düşük', 3] };
-const KIND = { release: 'sürüm', blog: 'blog', security: 'güvenlik' };
+const KIND = { release: 'sürüm', blog: 'blog', security: 'güvenlik', 'security-blog': 'güvenlik yazısı', community: 'topluluk' };
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const safeUrl = (u) => (/^https?:\/\//.test(u) ? u : '#');
 const longDate = (d) => new Date(d + 'T12:00:00Z').toLocaleDateString('tr-TR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+// Gün özeti: "3 gelişme, 2 güvenlik, 2 topluluk". Üç sayı ayrıdır, toplamları gündeki öğe sayısıdır.
+// Güvenlik = GitHub Advisory bültenleri; security-blog yazıları kategori bölümlerinde durduğu için gelişme sayılır.
+// long: sayfa ve RSS başlıklarında uzun biçim ("güvenlik bulgusu", "topluluk tartışması").
+function countText(d, long = false) {
+  const com = d.items.filter((i) => i.kind === 'community').length;
+  const sec = d.items.filter((i) => i.kind === 'security').length;
+  const dev = d.items.length - com - sec;
+  return [
+    dev || (!com && !sec) ? `${dev} gelişme` : null,
+    sec ? `${sec} güvenlik${long ? ' bulgusu' : ''}` : null,
+    com ? `${com} topluluk${long ? ' tartışması' : ''}` : null,
+  ].filter(Boolean).join(', ');
+}
 
 function securityItem(i) {
   const [label] = SEV[i.severity] || ['Belirsiz'];
@@ -34,15 +48,27 @@ function normalItem(i) {
 </article>`;
 }
 
+function communityItem(i) {
+  const meta = [i.source, i.score != null ? `${i.score} puan` : null, i.comments != null ? `${i.comments} yorum` : null, i.category].filter(Boolean).join(', ');
+  const summary = i.ozet || (i.text || '').slice(0, 220);
+  return `<article class="item">
+  <h3><a href="${safeUrl(i.url)}">${esc(i.title)}</a></h3>
+  <p class="meta">${esc(meta)}${i.link ? `, <a href="${safeUrl(i.link)}">bağlantı</a>` : ''}</p>
+  ${summary ? `<p>${esc(summary)}</p>` : ''}
+</article>`;
+}
+
 function renderDay(day) {
   const sec = day.items.filter((i) => i.kind === 'security').sort((a, b) => (SEV[a.severity]?.[1] ?? 9) - (SEV[b.severity]?.[1] ?? 9));
-  const rest = day.items.filter((i) => i.kind !== 'security');
+  const community = day.items.filter((i) => i.kind === 'community').sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+  const rest = day.items.filter((i) => i.kind !== 'security' && i.kind !== 'community');
   let html = '';
   if (sec.length) html += `<section class="security"><h2>Güvenlik bulguları</h2>${sec.map(securityItem).join('')}</section>`;
   for (const c of CATS) {
     const list = rest.filter((i) => (CATS.includes(i.category) ? i.category : 'Diğer') === c);
     if (list.length) html += `<section><h2>${c}</h2>${list.map(normalItem).join('')}</section>`;
   }
+  if (community.length) html += `<section class="community"><h2>Toplulukta konuşulanlar</h2>${community.map(communityItem).join('')}</section>`;
   if (!html) html = '<p class="empty">Bu gün için yeni bir gelişme yok.</p>';
   return html;
 }
@@ -95,10 +121,9 @@ footer{color:var(--mute);font-size:.85rem;padding-top:2.5rem;padding-bottom:3rem
 
 function rss(days) {
   const items = days.slice(0, 30).map((d) => {
-    const n = d.items.length;
-    const sec = d.items.filter((i) => i.kind === 'security').length;
-    const desc = d.items.map((i) => `${i.kind === 'security' ? '[Güvenlik] ' : ''}${i.title}`).join('\n');
-    return `<item><title>${esc(`${longDate(d.date)}: ${n} gelişme${sec ? `, ${sec} güvenlik bulgusu` : ''}`)}</title><link>${SITE_URL}/${d.date}.html</link><guid>${SITE_URL}/${d.date}.html</guid><pubDate>${new Date(d.date + 'T03:00:00Z').toUTCString()}</pubDate><description>${esc(desc)}</description></item>`;
+    const tag = { security: '[Güvenlik] ', community: '[Topluluk] ' };
+    const desc = d.items.map((i) => `${tag[i.kind] || ''}${i.title}`).join('\n');
+    return `<item><title>${esc(`${longDate(d.date)}: ${countText(d, true)}`)}</title><link>${SITE_URL}/${d.date}.html</link><guid>${SITE_URL}/${d.date}.html</guid><pubDate>${new Date(d.date + 'T03:00:00Z').toUTCString()}</pubDate><description>${esc(desc)}</description></item>`;
   });
   return `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${TITLE}</title><link>${SITE_URL}/</link><description>${esc(DESC)}</description><language>tr</language>${items.join('')}</channel></rss>`;
 }
@@ -115,16 +140,15 @@ export function buildSite() {
     .sort((a, b) => b.date.localeCompare(a.date));
 
   for (const d of days) {
-    fs.writeFileSync(path.join(out, `${d.date}.html`), page(`${longDate(d.date)} | ${TITLE}`, `<h1>${longDate(d.date)}</h1><p class="date">${d.items.length} gelişme</p>${renderDay(d)}<p><a href="index.html">Tüm günler</a></p>`));
+    fs.writeFileSync(path.join(out, `${d.date}.html`), page(`${longDate(d.date)} | ${TITLE}`, `<h1>${longDate(d.date)}</h1><p class="date">${countText(d, true)}</p>${renderDay(d)}<p><a href="index.html">Tüm günler</a></p>`));
   }
 
   const latest = days[0];
   const archive = `<h2>Arşiv</h2><ul class="archive">${days.map((d) => {
-    const sec = d.items.filter((i) => i.kind === 'security').length;
-    return `<li><a href="${d.date}.html">${longDate(d.date)}</a><span class="meta">${d.items.length} gelişme${sec ? `, ${sec} güvenlik` : ''}</span></li>`;
+    return `<li><a href="${d.date}.html">${longDate(d.date)}</a><span class="meta">${countText(d)}</span></li>`;
   }).join('')}</ul>`;
   const home = latest
-    ? `<h1>${longDate(latest.date)}</h1><p class="date">Son güncelleme. ${latest.items.length} gelişme</p>${renderDay(latest)}${archive}`
+    ? `<h1>${longDate(latest.date)}</h1><p class="date">Son güncelleme. ${countText(latest, true)}</p>${renderDay(latest)}${archive}`
     : '<h1>Henüz içerik yok</h1><p class="empty">İlk günlük çalıştırma tamamlandığında burada görünecek.</p>';
   fs.writeFileSync(path.join(out, 'index.html'), page(TITLE, home));
   fs.writeFileSync(path.join(out, 'style.css'), CSS);

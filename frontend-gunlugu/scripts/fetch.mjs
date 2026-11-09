@@ -1,8 +1,10 @@
 import Parser from 'rss-parser';
 import { advisoryPackages } from './sources.mjs';
 
-const parser = new Parser({ timeout: 15000, headers: { 'User-Agent': 'frontend-gunlugu' } });
-const strip = (s = '') => s.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+// Connection: close → Node 22 bağlantıları açık tutar (keep-alive); kapatılmazsa süreç, sunucu bağlantıyı
+// bırakana kadar bitmez (Medium/web.dev'de dakikalarca, GitHub'da ~30 sn).
+const parser = new Parser({ timeout: 15000, headers: { 'User-Agent': 'frontend-gunlugu', Connection: 'close' } });
+export const strip = (s = '') => s.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
 export async function fetchFeeds(feeds, since) {
   const results = await Promise.allSettled(

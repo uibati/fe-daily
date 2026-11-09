@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { feeds } from './sources.mjs';
 import { fetchFeeds, fetchAdvisories } from './fetch.mjs';
+import { fetchHackerNews, fetchReddit } from './community.mjs';
 import { summarize } from './summarize.mjs';
 import { buildSite } from './build.mjs';
 
@@ -14,9 +15,15 @@ const since = new Date(Date.now() - 36 * 60 * 60 * 1000); // 36 saat: cron gecik
 
 const seen = new Set(fs.existsSync(SEEN_FILE) ? JSON.parse(fs.readFileSync(SEEN_FILE, 'utf8')) : []);
 
-const [feedItems, advisories] = await Promise.all([fetchFeeds(feeds, since), fetchAdvisories(since)]);
-const fresh = [...advisories, ...feedItems].filter((i) => i.id && !seen.has(i.id));
-console.log(`${fresh.length} yeni öğe bulundu, ${fresh.filter((i) => i.kind === 'security').length} tanesi güvenlik bülteni.`);
+const [feedItems, advisories, hnItems, redditItems] = await Promise.all([
+  fetchFeeds(feeds, since),
+  fetchAdvisories(since),
+  fetchHackerNews(since),
+  fetchReddit(since),
+]);
+const fresh = [...advisories, ...feedItems, ...hnItems, ...redditItems].filter((i) => i.id && !seen.has(i.id));
+const count = (k) => fresh.filter((i) => i.kind === k).length;
+console.log(`${fresh.length} yeni öğe bulundu: ${count('security')} güvenlik bülteni, ${count('community')} topluluk tartışması.`);
 
 await summarize(fresh);
 
