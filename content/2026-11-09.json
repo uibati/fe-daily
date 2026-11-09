@@ -1,4 +1,378 @@
 {
   "date": "2026-11-09",
-  "items": []
+  "items": [
+    {
+      "id": "https://github.com/vercel/next.js/releases/tag/v16.4.5",
+      "title": "v16.4.5",
+      "url": "https://github.com/vercel/next.js/releases/tag/v16.4.5",
+      "source": "Next.js Releases",
+      "category": "Next.js",
+      "kind": "release",
+      "date": "2026-11-03T18:38:39.000Z",
+      "text": "This release contains security fixes for the following advisories: Moderate Cross-tenant sensitive information disclosure in Next.js 'use cache' when called through unstable_cache Cache leak across root param values in nested 'use cache' functions (follow-up) Cache poisoning of shared fallback shells in Cache Components via request-supplied placeholder route params Cross-user cache disclosure and poisoning in Next.js use cache with binary arguments Cross-client response injection and disclosure in self-hosted Next.js applications forwarding fetched responses SVG rejection bypass in Next.js image optimization HttpOnly cookie exposure through internal response header on Next.js Edge runtime routes"
+    },
+    {
+      "id": "https://github.com/vercel/next.js/releases/tag/v15.5.29",
+      "title": "v15.5.29",
+      "url": "https://github.com/vercel/next.js/releases/tag/v15.5.29",
+      "source": "Next.js Releases",
+      "category": "Next.js",
+      "kind": "release",
+      "date": "2026-11-03T18:38:27.000Z",
+      "text": "This release contains security fixes for the following advisories: Moderate Cross-client response injection and disclosure in self-hosted Next.js applications forwarding fetched responses SVG rejection bypass in Next.js image optimization HttpOnly cookie exposure through internal response header on Next.js Edge runtime routes"
+    },
+    {
+      "id": "/blog/announcements/notable-v8-changes-from-node-js-26-to-27-alpha?1793880000000",
+      "title": "Notable V8 changes from Node.js 26 to 27 (Alpha)",
+      "url": "https://nodejs.org/en/blog/announcements/notable-v8-changes-from-node-js-26-to-27-alpha",
+      "source": "Node.js Blog",
+      "category": "Node.js",
+      "kind": "blog",
+      "date": "2026-11-05T12:00:00.000Z",
+      "text": ""
+    },
+    {
+      "id": "/blog/vulnerability/november-2026-security-releases?1793746800000",
+      "title": "Wednesday, November 11, 2026 Security Releases",
+      "url": "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+      "source": "Node.js Blog",
+      "category": "Node.js",
+      "kind": "blog",
+      "date": "2026-11-03T23:00:00.000Z",
+      "text": ""
+    },
+    {
+      "id": "/blog/november-2026-security-release",
+      "title": "November 2026 Security Release",
+      "url": "https://nextjs.org/blog/november-2026-security-release",
+      "source": "Next.js Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-03T18:00:00.000Z",
+      "text": "The November 2026 security release for Next.js is now available"
+    },
+    {
+      "id": "https://vercel.com/changelog/json-render-and-chat-sdk-agents",
+      "title": "Chat SDK agents can now stream generative UI with json-render",
+      "url": "https://vercel.com/changelog/json-render-and-chat-sdk-agents",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-06T21:00:00.000Z",
+      "text": "You can now stream generative UI from your agent with .Chat SDKjson-render With a typed catalog of components, the agent writes a JSON spec that converts into a Chat SDK card. Each adapter then posts the card in its platform’s native format, such as Block Kit on Slack and Adaptive Cards on Teams.json-render The catalog covers tables, charts, buttons, and more, so there’s no separate tool to build and maintain for each message shape. posts the card once its root element has content and updates the message as new elements stream in. Edits go out at most once every 500 ms by default, which matches Chat SDK’s streaming interval. Once the stream ends, the message shows the final, validated card.streamCard checks every element’s props against its component schema and throws for an invalid spec. Each problem gets its own readable issue, so you can send the list back to the model for a corrected spec.toCardCardSpecError Platforms cap what a single message can hold, and Chat SDK adapters degrade content past those caps. The Slack adapter, for example, turns a second table into a code block. Pass to reject those specs instead.limits Read the to get started, or .documentationtry the playgroun"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-cli-can-now-set-new-projects-to-expire",
+      "title": "Vercel CLI can now set new projects to expire",
+      "url": "https://vercel.com/changelog/vercel-cli-can-now-set-new-projects-to-expire",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-06T18:00:00.000Z",
+      "text": "You can now set a new project to expire when you deploy it with . Expired projects are deleted automatically, so prototypes, demos, and test apps don't need cleaning up by hand.Vercel CLI Run with and a duration:vercel deploy--delete-project-after Supported durations are , , , , and , and the CLI prints the date and time when the project expires. The flag only applies when creates the project. If you deploy to an existing project with the flag, its expiration doesn't change and the CLI prints a warning.1h1d1w2w30dvercel deploy To remove a project's expiration, run :vercel project keep Update Vercel CLI to or later to get started. Learn more in the .v65.12.0vercel deploy documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-tracing-is-now-generally-available",
+      "title": "Vercel Tracing is now generally available",
+      "url": "https://vercel.com/changelog/vercel-tracing-is-now-generally-available",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-06T17:00:00.000Z",
+      "text": "is now generally available on all plans. You can now search and inspect traces from the or the , and new Next.js projects get tracing by default. Pricing is unchanged from the beta.Vercel TracingdashboardVercel CLI In beta, you could only open a trace per request from the Logs page. The new Traces page shows every trace and span in one place, for a project or your whole team. Switch between a Spans list and a Traces list, filter each, and search with (KQL). A Live mode streams new traces as they arrive. A query like narrows to slow database spans by name and duration.Kibana Query Languagespan.name:db* AND span.duration > 500 The Traces page uses the same KQL as , so a query built in the dashboard runs in the CLI unchanged. Search covers every project in your team, or one project with the flag. Inspect a single trace with , and manage a project's sampling rules with .vercel traces search --query--projectvercel traces inspect vercel traces config In beta, nothing was collected until you added a sampling rule. Starting with Next.js 16.5, new projects created on Vercel that include at least one Node.js function get tracing turned on after their first successful build. Vercel adds one s"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-schedules-is-now-in-public-beta",
+      "title": "Vercel Schedules is now in public beta",
+      "url": "https://vercel.com/changelog/vercel-schedules-is-now-in-public-beta",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-05T17:00:00.000Z",
+      "text": "is now in public beta on all plans. Run tasks on a recurring cadence or at a single point in time, in production, preview, or custom environments.Vercel Schedules Schedules in can target a private Vercel Function, an HTTP path, or a Vercel Queue topic, and schedules created at runtime target a Queue topic. Any schedule can be enabled, disabled, or run on demand without redeploying.vercel.json Define a static schedule: Adding a trigger makes the function private. It has no public URL and only the Vercel schedule infrastructure can invoke it.schedule/v1beta Handle the dispatch: Create a schedule at runtime: Schedules is the successor to . Existing Cron Jobs continue to work, and the covers moving them to Schedules. Schedules also power and experimental scheduled tasks in .Cron Jobsmigration guidedynamic schedules in EveNitro projects Vercel Schedules is billed starting at $5 per 1M runs and $10 per 1M creations on Pro and Enterprise. Hobby includes 500 schedule creations and 5,000 runs per month. Read the for more on how Schedules works, then get started with the .blog postSchedules documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/atomic-start-hooks-in-the-workflow-sdk",
+      "title": "Workflow SDK adds idempotent starts",
+      "url": "https://vercel.com/changelog/atomic-start-hooks-in-the-workflow-sdk",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-04T18:55:00.000Z",
+      "text": "The 's function can now admit a run and claim a hook in one atomic step. Duplicate workflow starts fail safely. The atomic start replaces the previous -then- pattern, whose gap between the lookup and the start left a documented duplicate-start race.Workflow SDKstart()getHookByToken()start() The claimed Hook exists from the moment the run is admitted, so works even before the run begins executing, and early payloads are buffered and delivered in order. Inside the workflow, with the same token binds to the already-claimed hook: guaranteed, registering nothing new, adding no step, and resolving to .resumeHookcreateHook({ token })getConflict()null The token is the idempotency key, and it comes from your own domain: an order ID, an invoice ID, an import ID, or a request ID. The token alone guarantees idempotency. Exactly one run owns it, and a duplicate throws carrying the owner's and never becomes a run. The workflow doesn't have to open the hook at all, and if it never does, the token was only an idempotency key and the run completes normally.start()HookConflictErrorconflictingRunId Setting keeps the token unavailable after the run ends, counted from , so late duplicates are still ref"
+    },
+    {
+      "id": "https://vercel.com/blog/introducing-vercel-schedules",
+      "title": "Introducing Vercel Schedules",
+      "url": "https://vercel.com/blog/introducing-vercel-schedules",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-04T13:00:00.000Z",
+      "text": "Cron jobs are useful for work that needs to happen regularly. You can use them to do things such as back up your database on a schedule, or keep data in sync between two systems. You define them once in code and then can update them by editing their config and redeploying. But today, agents interact with users as work evolves, and schedules need to be updated in real time. We built Vercel Schedules to allow agents and applications to create, change, or cancel one-time and recurring schedules through code, without redeploying. Schedules builds on the static approach used by , but are designed to let users and agents decide when work should happen while your application is still running. A schedule tells Vercel when to trigger a task and where to send it. Your application provides the code that carries out the work.Vercel Cron Jobs You can use schedules for both static and dynamic jobs: You can also test scheduled work on before running it in Production.Preview deployments and in custom environments Take this example: A user could ask an agent with web access, “Tomorrow morning, summarize the top five stories on Hacker News.” The traditional solution would be storing the request and "
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-token-scanning-expands-to-more-public-sources",
+      "title": "Vercel token scanning expands to more public sources",
+      "url": "https://vercel.com/changelog/vercel-token-scanning-expands-to-more-public-sources",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-04T13:00:00.000Z",
+      "text": "Vercel has partnered with to expand automated detection and revocation of publicly exposed Vercel tokens.Truffle Security Revoking exposed credentials helps prevent unauthorized access to your projects and unexpected costs from unauthorized use of services such as and . If your token is revoked, you’ll receive an email from us explaining why.Vercel SandboxVercel AI Gateway Truffle Security reports tokens exposed in public sources including GitHub, GitLab, Docker, npm, PyPI, Hugging Face, Android APKs, and Firefox Add-ons. Vercel has revoked hundreds of tokens reported by Truffle Security. A separate Vercel scanner now checks each new monthly dataset of public web pages and automatically revokes any exposed Vercel tokens it finds.Common Crawl Learn more about creating tokens, setting their scopes, and managing them in the .access token documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-security-review-public-beta",
+      "title": "Vercel Security Review now in public beta",
+      "url": "https://vercel.com/changelog/vercel-security-review-public-beta",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-03T20:00:00.000Z",
+      "text": "is now in public beta for Pro and Enterprise teams. Once enabled, every push to a connected GitHub repository is automatically reviewed for vulnerabilities, and findings are reported in the .Vercel Security ReviewVulnerabilities dashboard Security Review runs automatically when code is pushed to a connected GitHub repository. Because reviews start from push events rather than pull requests, direct and force pushes to your production branch are reviewed as well. Every project affected by a single push is reviewed together. Each finding records the project, environment, branch, and commit, with a summary, a suggested fix, and an AI-generated severity rating. Security Review adds its own GitHub check to each commit it reviews. When there's a pull request, it also posts findings as review comments that link back to each finding. On public repositories, finding details stay in the dashboard. Clicking on a vulnerability report hands the finding to Vercel Agent, which proposes a fix and opens a pull request for you to review. Nothing merges until you approve it.Fix with Vercel Agent To fix findings with your coding agent instead, use in the Vercel CLI, or copy any finding as Markdown or J"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-ci-no-longer-requires-a-linked-vercel-project",
+      "title": "Vercel CI no longer requires a linked Vercel project",
+      "url": "https://vercel.com/changelog/vercel-ci-no-longer-requires-a-linked-vercel-project",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-03T18:00:00.000Z",
+      "text": "Vercel CI can now run on a GitHub repository that has no Vercel project. Until now you had to create an empty project just to connect the repository. To enable it, you need: Then, from a clone of the repository, run: CI is enabled for the team your CLI is set to. Pass to use a different one. From the next push, tasks run as configured in your repository.--scope Private GitHub repositories only. Public repositories and other Git providers are not yet supported. Read the to configure tasks.Vercel CI documentation Read more The Vercel GitHub App installed with access to the repository Your GitHub account connected to your Vercel account Write or admin permission on the repository"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-cli-now-diagnoses-setup-problems-with-vercel-doctor",
+      "title": "Diagnose Vercel CLI setup problems with vercel doctor",
+      "url": "https://vercel.com/changelog/vercel-cli-now-diagnoses-setup-problems-with-vercel-doctor",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-03T00:00:00.000Z",
+      "text": "Vercel CLI now includes , which checks your setup and shows the command that fixes each problem it finds.vercel doctor It checks the CLI version and install, your login and current team, the project link, and your project configuration in . It also reports active incidents from the Vercel status page.vercel.json Each check reports OK, Warning, Failed, or Skipped. When vercel upgrade can't update the installed CLI, the install check shows where the CLI runs from and how to reinstall it. Doctor runs without a login or a linked project, and it never prompts, logs in, or links a project, so coding agents can run it before guessing at a fix. Add --json to get each check's status and suggested commands as structured output. Update to the latest CLI version and run to check your setup, or read the doctor command reference.vercel doctor Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/projects-can-now-be-configured-with-vercel-toml",
+      "title": "Projects can now be configured with vercel.toml",
+      "url": "https://vercel.com/changelog/projects-can-now-be-configured-with-vercel-toml",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-02T21:00:00.000Z",
+      "text": "Vercel now supports , which allows you to to configure your project using the . All of the same configuration properties are supported as in , but it supports comments and has a flatter structure. vercel.tomlvercel.jsonTOML configuration format All projects can now use . Use only one project configuration file: vercel.toml, vercel.json, or vercel.ts.vercel.toml For example, configuring :Services Read the . documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-mcp-now-supports-client-id-metadata-documents",
+      "title": "Vercel MCP now supports Client ID Metadata Documents",
+      "url": "https://vercel.com/changelog/vercel-mcp-now-supports-client-id-metadata-documents",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-02T20:09:00.000Z",
+      "text": "Any MCP client can now ask to connect to . You still log in and approve each connection, but the client no longer has to be reviewed by Vercel first. Previously, Vercel reviewed and allowlisted each client and its redirect URIs by hand, and anything not on the list was rejected.Vercel MCP To connect, a client publishes a Client ID Metadata Document (CIMD), a JSON file on its own domain that describes it, and uses that file's HTTPS URL as its OAuth . This follows the MCP authorization spec, which now recommends CIMD over Dynamic Client Registration.client_id Because Vercel hasn't reviewed these clients, the consent screen shows where each one comes from: its name, its logo, and the hostname that serves its metadata document, for example \"Claude Code by claude.ai\". CIMD clients don't get the Vercel verified badge, so the hostname is what you're trusting when you approve. Apps already registered with Vercel are unchanged. Read the to connect your client.Vercel MCP documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/monitor-vercel-deployments-in-chatgpt",
+      "title": "Vercel MCP now renders deployments as an interactive card",
+      "url": "https://vercel.com/changelog/monitor-vercel-deployments-in-chatgpt",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-02T17:05:00.000Z",
+      "text": "can now show your deployments as an interactive card inside ChatGPT and other chat clients that support .Vercel MCPMCP Apps The card shows live deployment status, build logs, and source and commit details, with a Visit button once the deployment URL is ready. You can send logs into the chat to debug with the model, or open the fullscreen view to read them beneath the card. For repositories linked to multiple projects, a project list lets you switch between them. The card is Vercel MCP's first MCP App, built on the MCP Apps extension. Clients without app support receive the deployment state, preview URL, and commit as text instead. The tool looks up deployments by project, repository, or commit, with environment filtering. ChatGPT connects to Vercel MCP through its .open_deploymentsConnectors setup Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/flags-explorer-redesigned-for-easier-override-sharing",
+      "title": "Flags Explorer redesigned for easier override sharing",
+      "url": "https://vercel.com/changelog/flags-explorer-redesigned-for-easier-override-sharing",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-02T16:58:00.000Z",
+      "text": "is a tool in the Vercel Toolbar where you can see which feature flags are active on your end, and share them with your team, either by setting them for the branch or through a URL.Flags Explorer The Explorer surface has been redesigned to co-locate overrides, branch recommendations, and any related actions. Whenever a branch has overrides set, they will be recommended to teammates visiting the deployment through a dialog. Flags Explorer is available on all plans. Read the to get started.documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-sandbox-with-drives-now-starts-up-to-2-4x-faster",
+      "title": "Vercel Sandbox with Drives now starts up to 2.4× faster",
+      "url": "https://vercel.com/changelog/vercel-sandbox-with-drives-now-starts-up-to-2-4x-faster",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-02T16:39:00.000Z",
+      "text": "Vercel Sandboxes that mount now start faster. Median creation time dropped from 1.7s to 0.7s, and p95 dropped from 2.2s to 1.6s.Drives The speedup applies automatically to every sandbox that uses Drives, with no SDK upgrade or configuration changes needed. Pricing stays the same. Learn more in the .Vercel Drives documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/evaluate-vercel-flags-from-another-project-without-sharing-sdk-keys",
+      "title": "Evaluate Vercel Flags from another project without sharing SDK keys.",
+      "url": "https://vercel.com/changelog/evaluate-vercel-flags-from-another-project-without-sharing-sdk-keys",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-02T16:00:00.000Z",
+      "text": "let applications evaluate flags defined in another Vercel project within the same team, without managing SDK keys.Project Connections Previously, sharing flags between projects required copying a server SDK key into an environment variable and managing it manually. Connected projects authenticate using their deployment’s identity. For local development, retrieves your project’s OIDC token.vercel env pull Manage access from the page under your project's Flags section, or with in the CLI. Connections grant read-only access across all environments. The consumer deployment determines the flag environment (production deployments evaluate production flags). Connectionsvercel flags connections In the consumer application, create an adapter with the source project’s ID. Access can be revoked without redeploying. Project Connections are available on all plans and require or later, or or later when using the core library directly. Managing connections from the CLI requires Vercel CLI or later.@flags-sdk/vercel1.6.0@vercel/flags-core1.11.063.0.0 Learn more in the Vercel Flags documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/blog/vercel-security-review",
+      "title": "Introducing Vercel Security Review",
+      "url": "https://vercel.com/blog/vercel-security-review",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-02T13:00:00.000Z",
+      "text": "Today, we are launching in public beta.Vercel Security Review Security Review is a new capability in , alongside Code Review and Investigation. Once enabled, it scans for vulnerabilities on every push to a team's connected GitHub repositories.Vercel Agent Findings appear as comments on pull requests, are listed in the Security dashboard, and are available via CLI. With your permission, Vercel Agent can also validate and push fixes for findings. Security reviews are triggered by GitHub push events, including direct pushes to your production branch. In monorepos, reviews are scoped to the project's root directory. Here is how it works: Each review compares the push against a base and covers only what changed. For deployments, the base is the branch’s previous deployment, so the agent reviews the change against what’s already running. Because it only scans the diff, Security Review finishes in seconds and can run on every preview and production deployment. The agent reads the diff along with the surrounding code, traces how the changed code can be reached, checks for existing protections, and rechecks each finding before reporting it. That process is how it catches logic flaws like mi"
+    },
+    {
+      "id": "614442c1-9e8c-4eea-b790-c752e830ad8b",
+      "title": "Inside the new JNI layer in Expo Modules 2.0",
+      "url": "https://expo.dev/blog/expo-modules-2-0-new-jni-layer",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-06T17:45:28.000Z",
+      "text": "Kolibri is the JNI library under Expo Modules 2.0 on Android. Calls into C++ objects are up to 51 times faster than with fbjni."
+    },
+    {
+      "id": "9baee4e6-eef5-4bc4-97dc-dbb3b386da5b",
+      "title": "How a solo dev hit #2 in the Dutch App Store with this education app built on Expo",
+      "url": "https://expo.dev/blog/samio-learning-solo-developer-expo-case-study",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-03T22:40:00.000Z",
+      "text": "A solo developer with no native mobile experience shipped Samio in seven languages and reached #2 in paid Education on the Dutch App Store with no ad budget."
+    },
+    {
+      "id": "post-apple-developer-program-explained-free-vs-paid",
+      "title": "Apple Developer Program explained: free vs paid",
+      "url": "https://expo.dev/blog/apple-developer-program-explained-free-vs-paid",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-02T14:15:21.000Z",
+      "text": "You can build and run an Expo app on your iPhone for free. Here is how far you get, and the exact moment you need the $99 a year Apple Developer Program."
+    },
+    {
+      "id": "https://www.callstack.com/blog/building-a-software-factory-write-specs-an-agent-can-build-from",
+      "title": "Building a Software Factory: Write Specs an AI Agent Can Build From",
+      "url": "https://www.callstack.com/blog/building-a-software-factory-write-specs-an-agent-can-build-from",
+      "source": "Callstack Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-06T16:45:29.000Z",
+      "text": ""
+    },
+    {
+      "id": "https://www.callstack.com/blog/building-a-software-factory-the-night-my-agents-waited-for-me",
+      "title": "The Night My Coding Agents Waited for Me",
+      "url": "https://www.callstack.com/blog/building-a-software-factory-the-night-my-agents-waited-for-me",
+      "source": "Callstack Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-06T15:46:52.000Z",
+      "text": ""
+    },
+    {
+      "id": "https://www.callstack.com/blog/large-scale-migrations-with-coding-agents-planning-verification-and-rollback",
+      "title": "Large-Scale Codebase Migrations With Coding Agents",
+      "url": "https://www.callstack.com/blog/large-scale-migrations-with-coding-agents-planning-verification-and-rollback",
+      "source": "Callstack Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-04T16:03:58.000Z",
+      "text": ""
+    },
+    {
+      "id": "https://www.callstack.com/blog/conversational-banking-from-customer-questions-to-authorized-actions",
+      "title": "Conversational Banking: From Customer Questions to Authorized Actions",
+      "url": "https://www.callstack.com/blog/conversational-banking-from-customer-questions-to-authorized-actions",
+      "source": "Callstack Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-04T15:55:41.000Z",
+      "text": ""
+    },
+    {
+      "id": "https://swmansion.com/blog/integrating-deferred-deep-linking-in-android-apps/",
+      "title": "Integrating Deferred Deep Linking in Android Apps",
+      "url": "https://swmansion.com/blog/integrating-deferred-deep-linking-in-android-apps/",
+      "source": "Software Mansion Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-06T00:00:00.000Z",
+      "text": "Learn how to add deferred deep linking to your Android app with the Detour SDK – setup, App Links, Navigation Compose integration, and testing tips."
+    },
+    {
+      "id": "https://swmansion.com/blog/react-native-vs-native/",
+      "title": "React Native vs Native: How We Choose the Right Stack",
+      "url": "https://swmansion.com/blog/react-native-vs-native/",
+      "source": "Software Mansion Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-05T00:00:00.000Z",
+      "text": "How we decide between React Native, native, or a hybrid: 5 questions, 3 approaches, and how Gobi migrated from React Native to native iOS and Android."
+    },
+    {
+      "id": "https://socket.dev/blog/rails-active-storage-patch?utm_medium=feed",
+      "title": "Free Certified Patch for Critical Rails Active Storage Vulnerability",
+      "url": "https://socket.dev/blog/rails-active-storage-patch?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-06T20:40:46.426Z",
+      "text": "Ruby on Rails has released security updates addressing 21 vulnerabilities, including a critical Active Storage flaw that could allow unauthenticated attackers to write arbitrary files to a server through crafted uploads. Under certain configurations, attackers may also be able to read sensitive files, potentially leading to remote code execution. Socket is releasing a free Certified Patch for the critical vulnerability, tracked as GHSA-f3w6-w445-fwh9 (CVSS 9.8). The patch is available to everyone, including developers and organizations that are not Socket customers, providing an additional remediation option for teams that cannot immediately upgrade Rails. Impact # The vulnerability affects Rails applications that use ImageMagick to process Active Storage attachments. ImageMagick supports multiple file format handlers, known as coders, some of which can access files outside the uploaded image. Active Storage did not restrict these coders, potentially allowing an attacker to invoke dangerous operations through a crafted upload. Active Storage automatically analyzes files when they are attached, so exploitation does not require a separate preview, image transformation, or explicit an"
+    },
+    {
+      "id": "https://socket.dev/blog/shai-hulud-descendant-malicious-ruby-gem?utm_medium=feed",
+      "title": "Shai-Hulud Descendant Surfaces in Malicious Ruby Gem That Steals Credentials and Poisons AI Tools",
+      "url": "https://socket.dev/blog/shai-hulud-descendant-malicious-ruby-gem?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-06T17:11:11.050Z",
+      "text": "Socket’s Threat Research Team analyzed strutil-core version 1.0.1, a malicious RubyGems package that runs a 5.48 MB credential-stealing worm when it is installed. The RubyGems account jamnajiea published a clean 1.0.0 on November 1, 2026, and pushed the malicious 1.0.1 less than two hours later. Socket’s AI Scanner flagged it 70 seconds after publication, and RubyGems removed both versions about five hours after the malicious release. strutil-core was a standalone gem, not a compromised existing package. We found no public projects that depended on it, and we have not confirmed any victims or any packages the worm infected from it. The payload is what makes it worth a closer look. It is a new build of the testmetest worm, a member of the Miasma family that grew out of the publicly released Shai-Hulud toolkit, and strutil-core is the only RubyGems package we have tied to it. Bitbison’s sandbox run confirms that the gem runs the payload at install time and reads credential files. The rest of this post comes from static analysis of the code, not from activity seen on victim systems. Install-time execution: a native extension script, ext/strutil-core/extconf.rb, downloads the Bun JavaS"
+    },
+    {
+      "id": "https://socket.dev/blog/github-to-block-pull-request-target?utm_medium=feed",
+      "title": "GitHub to Block pull_request_target Workflows by Default Starting December 2",
+      "url": "https://socket.dev/blog/github-to-block-pull-request-target?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-05T15:01:39.110Z",
+      "text": "GitHub will begin blocking GitHub Actions workflows triggered by pull_request_target in public repositories on December 2, 2026, expanding its protections against a class of CI/CD vulnerabilities that has repeatedly enabled attackers to steal credentials and compromise open source software releases. The restriction, originally announced in September, will prevent affected workflows from running unless an applicable Actions event policy explicitly allows them. GitHub had initially scheduled enforcement for November 2 but confirmed the postponed December 2 deadline in a new update this week, giving maintainers additional time to review their automation and configure exceptions. The new restriction goes beyond protections introduced in June, when GitHub updated actions/checkout to prevent common attempts to check out untrusted pull request code inside privileged workflows. This time, GitHub is blocking the pull_request_target trigger itself by default, including for workflows that use it safely. pull_request_target Is Now a Common Attack Vector Vector # GitHub introduced pull_request_target in 2020 to help maintainers automate tasks involving pull requests from external contributors. "
+    },
+    {
+      "id": "https://socket.dev/blog/hardening-github-actions-against-outside-threats?utm_medium=feed",
+      "title": "Hardening GitHub Actions Against Outside Threats",
+      "url": "https://socket.dev/blog/hardening-github-actions-against-outside-threats?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-03T17:41:44.155Z",
+      "text": "The supply chain attacks that defined 2025 and 2026 did not arrive as typosquats or as newly published malicious packages. They arrived inside legitimate, widely installed packages whose maintainers wrote no malicious code. The malicious code entered during the release, and in most cases the release ran on GitHub Actions. Some of the better-known incidents on widely used projects, as a sample rather than a complete list: tj-actions/changed-files, March 2025 Nx s1ngularity, August 2025 Shai-Hulud, from September 2025 trivy-action, March 2026 axios, March 2026 TanStack Router, May 2026 GhostAction, across 2025 and 2026 LiteLLM 1.107.0, October 2026 A recurring pattern was compromise of the release process or its credentials. In some incidents, attackers made the project's own automation build and ship the malicious artifact, as in Ultralytics and TanStack Router. In others, they stole publishing credentials from that automation and published directly—Nx's postmortem explicitly states that the malicious packages did not originate from its CI pipeline. These paths require different controls, but share an outcome: malicious code distributed under the project's established package identi"
+    },
+    {
+      "id": "https://socket.dev/blog/composer-dependency-cooldowns?utm_medium=feed",
+      "title": "Composer 2.11 Adds Dependency Cooldowns",
+      "url": "https://socket.dev/blog/composer-dependency-cooldowns?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-03T04:23:21.154Z",
+      "text": "Composer 2.11 has introduced dependency cooldowns, giving PHP developers a native way to delay newly published package versions before they become eligible for installation. The release arrives nearly a year after developers first requested the feature, bringing Composer into line with package managers that have already adopted minimum release age policies to reduce exposure to supply chain attacks. The new config.policy.cooldown setting allows developers to specify a waiting period in hours, days, or weeks. It is disabled by default and applies during dependency resolution, including composer update and composer require. Existing lockfile installations remain unaffected. The feature also supports organization-wide configuration through Private Packagist, which can enforce cooldowns regardless of the Composer version developers and CI systems are running. Preventing Cooldown Bypasses # The original GitHub issue opened in November 2025 and gained urgency following a series of high-profile supply chain compromises. An initial implementation was submitted in December, but the feature missed Composer 2.10 as the maintainers worked through how to enforce cooldowns reliably. In May, afte"
+    },
+    {
+      "id": "hn:50361657",
+      "title": "Text.js: Build full-stack React apps that render inside console.log",
+      "url": "https://news.ycombinator.com/item?id=50361657",
+      "link": "https://textjs.org/",
+      "source": "Hacker News",
+      "category": "React",
+      "kind": "community",
+      "date": "2026-11-04T04:59:36.000Z",
+      "text": "",
+      "score": 118,
+      "comments": 51
+    }
+  ]
 }
