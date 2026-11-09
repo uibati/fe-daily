@@ -1,7 +1,7 @@
 // Topluluk kaynakları: Hacker News ve Reddit → "Toplulukta konuşulanlar" bölümü.
 // Ayarlar (aramalar, subreddit'ler, eşikler) scripts/sources.mjs içinde.
 import { hackerNews, reddit } from './sources.mjs';
-import { strip } from './fetch.mjs';
+import { strip, hoursSince, logSource } from './fetch.mjs';
 
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
 const decode = (s = '') => s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) =>
@@ -23,6 +23,7 @@ export async function fetchHackerNews(since) {
       const res = await fetch(`https://hn.algolia.com/api/v1/search?${params}`, { headers: { 'User-Agent': 'frontend-gunlugu' } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const { hits = [] } = await res.json();
+      const before = found.size;
       for (const h of hits) {
         if (found.has(h.objectID) || !h.title || (q.match && !q.match.test(h.title))) continue;
         found.set(h.objectID, {
@@ -39,6 +40,8 @@ export async function fetchHackerNews(since) {
           comments: h.num_comments ?? null,
         });
       }
+      // Zaman ve puan filtresini API uygular; dönen her hikâye zaten pencerede ve eşiğin üstünde.
+      console.log(`[kaynak] Hacker News "${q.query}": son ${hoursSince(since)} saatte ≥${hackerNews.minPoints} puanlı ${hits.length} hikâye, ${found.size - before} tanesi yeni ve başlık filtresinden geçti`);
     } catch (e) {
       console.warn(`[uyarı] Hacker News "${q.query}" alınamadı: ${e.message}`);
     }
@@ -74,16 +77,19 @@ export async function fetchReddit(since) {
   const base = token ? 'https://oauth.reddit.com' : 'https://www.reddit.com';
   const headers = { 'User-Agent': REDDIT_UA };
   if (token) headers.Authorization = `Bearer ${token}`;
+  // Reddit "top" yalnızca sabit aralıklar sunar; pencereyi kapsayan en küçük aralık seçilir.
+  const h = hoursSince(since);
+  const t = h <= 24 ? 'day' : h <= 168 ? 'week' : h <= 720 ? 'month' : 'year';
 
   const results = await Promise.allSettled(
     reddit.subreddits.map(async (sub) => {
-      const res = await fetch(`${base}/r/${sub.name}/top${token ? '' : '.json'}?t=day&limit=25&raw_json=1`, { headers });
+      const res = await fetch(`${base}/r/${sub.name}/top${token ? '' : '.json'}?t=${t}&limit=100&raw_json=1`, { headers });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      return (data?.data?.children || [])
-        .map((c) => c.data)
+      const all = (data?.data?.children || []).map((c) => c.data);
+      const inWindow = all.filter((p) => new Date(p.created_utc * 1000) >= since);
+      const picked = inWindow
         .filter((p) => !p.stickied && !p.over_18 && p.score >= reddit.minScore
-          && new Date(p.created_utc * 1000) >= since
           && !(reddit.skipFlair && p.link_flair_text && reddit.skipFlair.test(p.link_flair_text)))
         .sort((a, b) => b.score - a.score)
         .slice(0, reddit.limitPerSub)
@@ -100,12 +106,16 @@ export async function fetchReddit(since) {
           score: p.score,
           comments: p.num_comments,
         }));
+      return { total: all.length, inWindow: inWindow.length, picked };
     })
   );
   const items = [];
   results.forEach((r, n) => {
-    if (r.status === 'fulfilled') items.push(...r.value);
-    else console.warn(`[uyarı] r/${reddit.subreddits[n].name} alınamadı: ${r.reason?.message}`);
+    const name = `r/${reddit.subreddits[n].name}`;
+    if (r.status === 'rejected') return console.warn(`[uyarı] ${name} alınamadı: ${r.reason?.message}`);
+    const { total, inWindow, picked } = r.value;
+    logSource(name, total, inWindow, since, `, ${picked.length} tanesi eşik/filtreleri geçti`);
+    items.push(...picked);
   });
   return items;
 }

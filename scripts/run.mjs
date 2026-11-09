@@ -11,7 +11,12 @@ const SEEN_FILE = path.join(CONTENT, 'seen.json');
 fs.mkdirSync(CONTENT, { recursive: true });
 
 const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Istanbul' }); // YYYY-MM-DD
-const since = new Date(Date.now() - 36 * 60 * 60 * 1000); // 36 saat: cron gecikmelerine tolerans
+// SINCE_HOURS: kaç saat geriye bakılacağı. Varsayılan 36 (cron gecikmelerine tolerans);
+// elle çalıştırırken ör. 168 (1 hafta) verilebilir. Bulunan her şey bugünün dosyasına yazılır.
+const SINCE_HOURS = Number(process.env.SINCE_HOURS || 36);
+if (!Number.isFinite(SINCE_HOURS) || SINCE_HOURS <= 0) throw new Error(`Geçersiz SINCE_HOURS: "${process.env.SINCE_HOURS}"`);
+const since = new Date(Date.now() - SINCE_HOURS * 60 * 60 * 1000);
+console.log(`Zaman penceresi: son ${SINCE_HOURS} saat (${since.toISOString()} sonrası)`);
 
 const seen = new Set(fs.existsSync(SEEN_FILE) ? JSON.parse(fs.readFileSync(SEEN_FILE, 'utf8')) : []);
 

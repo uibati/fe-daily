@@ -6,12 +6,16 @@ import { advisoryPackages } from './sources.mjs';
 const parser = new Parser({ timeout: 15000, headers: { 'User-Agent': 'frontend-gunlugu', Connection: 'close' } });
 export const strip = (s = '') => s.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
+// Kaynak logu: "açıldı ama pencerede içerik yok" ile "açılmadı" ([uyarı] satırı) ayrımı için.
+export const hoursSince = (since) => Math.round((Date.now() - since.getTime()) / 3600e3);
+export const logSource = (name, total, inWindow, since, note = '') =>
+  console.log(`[kaynak] ${name}: ${total} öğe çekildi, ${inWindow} tanesi son ${hoursSince(since)} saatte${note}`);
+
 export async function fetchFeeds(feeds, since) {
   const results = await Promise.allSettled(
     feeds.map(async (f) => {
       const feed = await parser.parseURL(f.url);
-      return feed.items
-        .map((i) => ({
+      const all = feed.items.map((i) => ({
           id: i.guid || i.link,
           title: strip(i.title),
           url: i.link,
@@ -20,14 +24,20 @@ export async function fetchFeeds(feeds, since) {
           kind: f.type,
           date: new Date(i.isoDate || i.pubDate || 0).toISOString(),
           text: strip(i.contentSnippet || i.content || '').slice(0, 1200),
-        }))
-        .filter((i) => new Date(i.date) >= since && !(f.skip && f.skip.test(i.title)));
+        }));
+      const inWindow = all.filter((i) => new Date(i.date) >= since);
+      const kept = inWindow.filter((i) => !(f.skip && f.skip.test(i.title)));
+      return { total: all.length, inWindow: inWindow.length, kept };
     })
   );
   const items = [];
   results.forEach((r, n) => {
-    if (r.status === 'fulfilled') items.push(...r.value);
-    else console.warn(`[uyarı] ${feeds[n].name} alınamadı: ${r.reason?.message}`);
+    const f = feeds[n];
+    if (r.status === 'rejected') return console.warn(`[uyarı] ${f.name} alınamadı: ${r.reason?.message}`);
+    const { total, inWindow, kept } = r.value;
+    const skipped = inWindow - kept.length;
+    logSource(f.name, total, inWindow, since, skipped ? ` (${skipped} tanesi skip filtresiyle elendi)` : '');
+    items.push(...kept);
   });
   return items;
 }
@@ -52,8 +62,9 @@ export async function fetchAdvisories(since) {
     const res = await fetch(`https://api.github.com/advisories?${params}`, { headers });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    return data
-      .filter((a) => new Date(a.published_at) >= since)
+    const inWindow = data.filter((a) => new Date(a.published_at) >= since);
+    logSource('GitHub Advisory', data.length, inWindow.length, since);
+    return inWindow
       .map((a) => {
         const vulns = (a.vulnerabilities || []).filter((v) => advisoryPackages[v.package?.name]);
         const first = vulns[0]?.package?.name;

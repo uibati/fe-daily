@@ -143,17 +143,21 @@ export function buildSite() {
     fs.writeFileSync(path.join(out, `${d.date}.html`), page(`${longDate(d.date)} | ${TITLE}`, `<h1>${longDate(d.date)}</h1><p class="date">${countText(d, true)}</p>${renderDay(d)}<p><a href="index.html">Tüm günler</a></p>`));
   }
 
-  const latest = days[0];
-  const archive = `<h2>Arşiv</h2><ul class="archive">${days.map((d) => {
+  // Boş günlerin JSON'u ve sayfası yine üretilir ama arşivde, RSS'te ve ana sayfada gösterilmez;
+  // ana sayfa en son içerikli günü açar.
+  const filled = days.filter((d) => d.items.length);
+  const latest = filled[0];
+  const archive = `<h2>Arşiv</h2><ul class="archive">${filled.map((d) => {
     return `<li><a href="${d.date}.html">${longDate(d.date)}</a><span class="meta">${countText(d)}</span></li>`;
   }).join('')}</ul>`;
   const home = latest
     ? `<h1>${longDate(latest.date)}</h1><p class="date">Son güncelleme. ${countText(latest, true)}</p>${renderDay(latest)}${archive}`
-    : '<h1>Henüz içerik yok</h1><p class="empty">İlk günlük çalıştırma tamamlandığında burada görünecek.</p>';
+    : `<h1>Henüz içerik yok</h1><p class="empty">${days.length ? 'Şimdiye kadarki çalıştırmalarda yeni bir gelişme bulunmadı.' : 'İlk günlük çalıştırma tamamlandığında burada görünecek.'}</p>`;
   fs.writeFileSync(path.join(out, 'index.html'), page(TITLE, home));
   fs.writeFileSync(path.join(out, 'style.css'), CSS);
-  fs.writeFileSync(path.join(out, 'feed.xml'), rss(days));
-  console.log(`Site oluşturuldu: ${days.length} gün → dist/`);
+  fs.writeFileSync(path.join(out, 'feed.xml'), rss(filled));
+  const empty = days.length - filled.length;
+  console.log(`Site oluşturuldu: ${days.length} gün${empty ? ` (${empty} tanesi boş, arşivde gösterilmiyor)` : ''} → dist/`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) buildSite();

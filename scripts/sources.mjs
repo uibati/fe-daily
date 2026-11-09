@@ -3,8 +3,8 @@
 export const feeds = [
   // Resmi sürümler
   { name: 'Next.js Releases', url: 'https://github.com/vercel/next.js/releases.atom', category: 'Next.js', type: 'release', skip: /canary|nightly/i },
-  { name: 'React Releases', url: 'https://github.com/facebook/react/releases.atom', category: 'React', type: 'release', skip: /canary|nightly|experimental/i },
-  { name: 'React Native Releases', url: 'https://github.com/facebook/react-native/releases.atom', category: 'React Native', type: 'release', skip: /nightly|rc\.\d+/i },
+  { name: 'React Releases', url: 'https://github.com/react/react/releases.atom', category: 'React', type: 'release', skip: /canary|nightly|experimental/i },
+  { name: 'React Native Releases', url: 'https://github.com/react/react-native/releases.atom', category: 'React Native', type: 'release', skip: /nightly|rc\.\d+/i },
   { name: 'Node.js Releases', url: 'https://github.com/nodejs/node/releases.atom', category: 'Node.js', type: 'release' },
 
   // Resmi bloglar
@@ -18,8 +18,8 @@ export const feeds = [
   { name: 'Vercel Blog', url: 'https://vercel.com/atom', category: 'Next.js', type: 'blog', skip: /AI Gateway|^How /i },
   { name: 'Expo Blog', url: 'https://expo.dev/blog/rss.xml', category: 'React Native', type: 'blog' },
   { name: 'Callstack Blog', url: 'https://www.callstack.com/blog/rss.xml', category: 'React Native', type: 'blog' },
-  { name: 'Software Mansion Blog', url: 'https://blog.swmansion.com/feed', category: 'React Native', type: 'blog' },
-  { name: 'web.dev', url: 'https://web.dev/feed.xml', category: 'Diğer', type: 'blog' },
+  { name: 'Software Mansion Blog', url: 'https://swmansion.com/rss.xml', category: 'React Native', type: 'blog' },
+  { name: 'web.dev', url: 'https://web.dev/static/blog/feed.xml', category: 'Diğer', type: 'blog' },
 
   // Kişisel bloglar
   { name: 'Overreacted', url: 'https://overreacted.io/rss.xml', category: 'React', type: 'blog' },
