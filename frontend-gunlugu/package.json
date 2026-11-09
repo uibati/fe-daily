@@ -1,0 +1,14 @@
+{
+  "name": "frontend-gunlugu",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "daily": "node scripts/run.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.60.0",
+    "rss-parser": "^3.13.0"
+  }
+}
