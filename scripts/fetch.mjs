@@ -3,7 +3,7 @@ import { advisoryPackages } from './sources.mjs';
 
 // Connection: close → Node 22 bağlantıları açık tutar (keep-alive); kapatılmazsa süreç, sunucu bağlantıyı
 // bırakana kadar bitmez (Medium/web.dev'de dakikalarca, GitHub'da ~30 sn).
-const parser = new Parser({ timeout: 15000, headers: { 'User-Agent': 'frontend-gunlugu', Connection: 'close' } });
+export const parser = new Parser({ timeout: 15000, headers: { 'User-Agent': 'frontend-gunlugu', Connection: 'close' } });
 export const strip = (s = '') => s.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
 
 // Kaynak logu: "açıldı ama pencerede içerik yok" ile "açılmadı" ([uyarı] satırı) ayrımı için.
@@ -78,7 +78,8 @@ export async function fetchAdvisories(since) {
           date: new Date(a.published_at).toISOString(),
           text: strip(a.description || '').slice(0, 1200),
           severity: a.severity,
-          cvss: a.cvss?.score ?? null,
+          // Eski `cvss` alanı kullanımdan kalkıyor ve çoğu bültende boş; önce cvss_severities (v4, sonra v3). 0 = puan yok.
+          cvss: a.cvss_severities?.cvss_v4?.score || a.cvss_severities?.cvss_v3?.score || a.cvss?.score || null,
           cve: a.cve_id,
           affected: vulns.map((v) => `${v.package.name} ${v.vulnerable_version_range}`),
           patched: vulns.map((v) => v.first_patched_version).filter(Boolean),

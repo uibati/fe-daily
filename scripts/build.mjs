@@ -6,7 +6,8 @@ const TITLE = 'Frontend Günlüğü';
 const DESC = 'Next.js, Node.js, React ve React Native için günlük gelişmeler ve güvenlik bulguları.';
 const SITE_URL = (process.env.SITE_URL || '').replace(/\/$/, '');
 const CATS = ['Next.js', 'React', 'React Native', 'Node.js', 'Diğer'];
-const SEV = { critical: ['Kritik', 0], high: ['Yüksek', 1], moderate: ['Orta', 2], low: ['Düşük', 3] };
+// GitHub global advisory API'si orta seviye için "medium" döner; "moderate" (Dependabot adlandırması) de kabul edilir.
+const SEV = { critical: ['Kritik', 0], high: ['Yüksek', 1], medium: ['Orta', 2], moderate: ['Orta', 2], low: ['Düşük', 3] };
 const KIND = { release: 'sürüm', blog: 'blog', security: 'güvenlik', 'security-blog': 'güvenlik yazısı', community: 'topluluk' };
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -49,7 +50,8 @@ function normalItem(i) {
 }
 
 function communityItem(i) {
-  const meta = [i.source, i.score != null ? `${i.score} puan` : null, i.comments != null ? `${i.comments} yorum` : null, i.category].filter(Boolean).join(', ');
+  const unit = i.source === 'DEV Community' ? 'reaksiyon' : 'puan';
+  const meta = [i.source, i.score != null ? `${i.score} ${unit}` : null, i.comments != null ? `${i.comments} yorum` : null, i.category].filter(Boolean).join(', ');
   const summary = i.ozet || (i.text || '').slice(0, 220);
   return `<article class="item">
   <h3><a href="${safeUrl(i.url)}">${esc(i.title)}</a></h3>

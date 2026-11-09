@@ -5,7 +5,7 @@ const SYSTEM = `Sen bir frontend haber editörüsün. Sana JSON dizisi olarak ge
 Her biri için Türkçe, 1-2 cümlelik, sade bir özet yaz.
 Kurallar: Yalnızca verilen metne dayan, bilgi uydurma. Sürüm numaralarını, paket adlarını ve teknik terimleri olduğu gibi koru.
 Metin yetersizse başlığa dayanarak kısa bir özet yaz.
-tur "community" olanlar Hacker News veya Reddit tartışmalarıdır: neyin konuşulduğunu anlat, gönderideki iddiaları kesin bilgi gibi sunma.
+tur "community" olanlar Hacker News, Lobsters veya DEV Community'deki topluluk gönderileridir: neyin konuşulduğunu anlat, gönderideki iddiaları kesin bilgi gibi sunma.
 Çıktı yalnızca şu biçimde bir JSON dizisi olsun: [{"n": 0, "ozet": "..."}]. Başka metin, açıklama veya kod bloğu ekleme.`;
 
 export async function summarize(items) {

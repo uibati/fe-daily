@@ -39,6 +39,7 @@ export const advisoryPackages = {
   'react-dom': 'React',
   'react-server-dom-webpack': 'React',
   'react-server-dom-turbopack': 'React',
+  'react-server-dom-parcel': 'React', // RSC bültenleri webpack/turbopack ile birlikte parcel'i de kapsar
   'react-native': 'React Native',
 };
 
@@ -56,21 +57,33 @@ export const hackerNews = {
     { query: 'Node.js', category: 'Node.js', match: /\bnode\.?js\b/i },
     { query: 'nodejs', category: 'Node.js', match: /\bnode\.?js\b/i },
     { query: 'React Server Components', category: 'React', match: /\bserver components?\b|\bRSCs?\b/i },
-    { query: 'React',category: 'React', match: /\breact\b/i },
+    { query: 'React', category: 'React', match: /\breact\b/i },
   ],
 };
 
-// Reddit: her subreddit'in son 24 saatteki en çok oy alan gönderileri.
-// REDDIT_CLIENT_ID / REDDIT_CLIENT_SECRET tanımlıysa OAuth kullanılır (GitHub Actions'ta önerilir,
-// Reddit anonim istekleri bu IP'lerden sık sık 403/429 ile reddeder).
-export const reddit = {
-  minScore: 25,   // bu oy sayısının altındaki gönderiler elenir
-  limitPerSub: 5, // subreddit başına en fazla kaç gönderi
-  skipFlair: /help|question|meme/i, // yardım isteği ve mizah gönderilerini eler
-  subreddits: [
-    { name: 'nextjs', category: 'Next.js' },
-    { name: 'reactjs', category: 'React' },
-    { name: 'reactnative', category: 'React Native' },
-    { name: 'node', category: 'Node.js' },
+// Lobsters: etiket feed'leri. Başlıkta veya Lobsters etiketlerinde anahtar kelime geçen gönderiler alınır.
+// Sıra önemli: ilk eşleşen anahtar kelimenin kategorisi kullanılır (React Native, React'ten önce).
+export const lobsters = {
+  feeds: ['https://lobste.rs/t/javascript.rss', 'https://lobste.rs/t/web.rss'],
+  keywords: [
+    { match: /\breact[\s-]?native\b/i, category: 'React Native' },
+    { match: /\bnext\.?js\b/i, category: 'Next.js' },
+    { match: /\bnode\.?js\b/i, category: 'Node.js' },
+    { match: /\breact\b|\brsc\b/i, category: 'React' },
+  ],
+};
+
+// DEV Community: etiket başına "top" yazılar (/api/articles?tag=...&top=N, N = gün).
+// top, zaman penceresini kapsayacak şekilde büyütülür (36 saat → 2 gün, 168 saat → 7 gün).
+// Bir yazı birden fazla etikette çıkarsa ilk etiketin kategorisi kullanılır.
+export const devCommunity = {
+  top: 1,           // en az kaç günlük "top" listesi
+  minReactions: 20, // public_reactions_count eşiği
+  limitPerTag: 5,   // etiket başına en fazla kaç yazı
+  tags: [
+    { tag: 'react', category: 'React' },
+    { tag: 'nextjs', category: 'Next.js' },
+    { tag: 'reactnative', category: 'React Native' },
+    { tag: 'node', category: 'Node.js' },
   ],
 };

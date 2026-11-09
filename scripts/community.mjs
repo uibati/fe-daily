@@ -1,7 +1,7 @@
-// Topluluk kaynakları: Hacker News ve Reddit → "Toplulukta konuşulanlar" bölümü.
-// Ayarlar (aramalar, subreddit'ler, eşikler) scripts/sources.mjs içinde.
-import { hackerNews, reddit } from './sources.mjs';
-import { strip, hoursSince, logSource } from './fetch.mjs';
+// Topluluk kaynakları: Hacker News, Lobsters ve DEV Community → "Toplulukta konuşulanlar" bölümü.
+// Ayarlar (aramalar, anahtar kelimeler, etiketler, eşikler) scripts/sources.mjs içinde.
+import { hackerNews, lobsters, devCommunity } from './sources.mjs';
+import { parser, strip, hoursSince, logSource } from './fetch.mjs';
 
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
 const decode = (s = '') => s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) =>
@@ -49,73 +49,87 @@ export async function fetchHackerNews(since) {
   return [...found.values()].sort((a, b) => b.score - a.score).slice(0, hackerNews.limit);
 }
 
-const REDDIT_UA = 'nodejs:frontend-gunlugu:1.0.0';
-
-async function redditToken() {
-  const { REDDIT_CLIENT_ID: id, REDDIT_CLIENT_SECRET: secret } = process.env;
-  if (!id || !secret) return null;
-  const res = await fetch('https://www.reddit.com/api/v1/access_token', {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${Buffer.from(`${id}:${secret}`).toString('base64')}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'User-Agent': REDDIT_UA,
-    },
-    body: 'grant_type=client_credentials',
-  });
-  if (!res.ok) throw new Error(`Reddit token alınamadı: HTTP ${res.status}`);
-  return (await res.json()).access_token;
+export async function fetchLobsters(since) {
+  const found = new Map(); // guid → öğe; iki feed'de birden çıkan gönderi bir kez alınır
+  for (const url of lobsters.feeds) {
+    const name = `Lobsters (${url.match(/\/t\/([^.]+)\.rss/)?.[1] || url})`;
+    try {
+      const feed = await parser.parseURL(url);
+      const inWindow = feed.items.filter((i) => new Date(i.isoDate || i.pubDate || 0) >= since);
+      let matched = 0;
+      for (const i of inWindow) {
+        const title = strip(i.title);
+        const haystack = [title, ...(i.categories || [])].join(' ');
+        const kw = lobsters.keywords.find((k) => k.match.test(haystack));
+        if (!kw) continue;
+        matched++;
+        const id = i.guid || i.comments || i.link;
+        if (found.has(id)) continue;
+        const discussion = i.comments || i.link;
+        found.set(id, {
+          id: `lobsters:${id}`,
+          title,
+          url: discussion,
+          link: i.link && i.link !== discussion ? i.link : null,
+          source: 'Lobsters',
+          category: kw.category,
+          kind: 'community',
+          date: new Date(i.isoDate || i.pubDate).toISOString(),
+          text: strip(i.contentSnippet || i.content || '').slice(0, 1200),
+          score: null, // Lobsters RSS puan vermiyor
+          comments: null,
+        });
+      }
+      logSource(name, feed.items.length, inWindow.length, since, `, ${matched} tanesi anahtar kelimeyle eşleşti`);
+    } catch (e) {
+      console.warn(`[uyarı] ${name} alınamadı: ${e.message}`);
+    }
+  }
+  return [...found.values()];
 }
 
-export async function fetchReddit(since) {
-  let token = null;
-  try {
-    token = await redditToken();
-  } catch (e) {
-    console.warn(`[uyarı] ${e.message}; anonim erişim deneniyor.`);
-  }
-  const base = token ? 'https://oauth.reddit.com' : 'https://www.reddit.com';
-  const headers = { 'User-Agent': REDDIT_UA };
-  if (token) headers.Authorization = `Bearer ${token}`;
-  // Reddit "top" yalnızca sabit aralıklar sunar; pencereyi kapsayan en küçük aralık seçilir.
-  const h = hoursSince(since);
-  const t = h <= 24 ? 'day' : h <= 168 ? 'week' : h <= 720 ? 'month' : 'year';
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
-  const results = await Promise.allSettled(
-    reddit.subreddits.map(async (sub) => {
-      const res = await fetch(`${base}/r/${sub.name}/top${token ? '' : '.json'}?t=${t}&limit=100&raw_json=1`, { headers });
+export async function fetchDevCommunity(since) {
+  // top=N "son N gün"; pencere 24 saati aşıyorsa kapsayacak şekilde büyütülür.
+  const top = Math.max(devCommunity.top, Math.ceil(hoursSince(since) / 24));
+  const found = new Map(); // makale id → öğe; ilk etiketin kategorisi kalır
+  for (const [n, t] of devCommunity.tags.entries()) {
+    // DEV art arda gelen isteklere "Retry later" (düz metin) döner; istekler sırayla ve aralıklı atılır.
+    if (n > 0) await wait(1500);
+    const name = `DEV Community #${t.tag}`;
+    try {
+      const res = await fetch(`https://dev.to/api/articles?tag=${encodeURIComponent(t.tag)}&top=${top}&per_page=100`, {
+        headers: { 'User-Agent': 'frontend-gunlugu', Accept: 'application/json' },
+      });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      const all = (data?.data?.children || []).map((c) => c.data);
-      const inWindow = all.filter((p) => new Date(p.created_utc * 1000) >= since);
+      const all = await res.json();
+      if (!Array.isArray(all)) throw new Error('beklenmeyen yanıt biçimi');
+      const inWindow = all.filter((a) => new Date(a.published_at) >= since);
       const picked = inWindow
-        .filter((p) => !p.stickied && !p.over_18 && p.score >= reddit.minScore
-          && !(reddit.skipFlair && p.link_flair_text && reddit.skipFlair.test(p.link_flair_text)))
-        .sort((a, b) => b.score - a.score)
-        .slice(0, reddit.limitPerSub)
-        .map((p) => ({
-          id: `reddit:${p.name}`,
-          title: p.title,
-          url: `https://www.reddit.com${p.permalink}`,
-          link: !p.is_self && p.url && !/(^|\.)(reddit\.com|redd\.it)\//.test(p.url.replace(/^https?:\/\//, '')) ? p.url : null,
-          source: `r/${sub.name}`,
-          category: sub.category,
+        .filter((a) => a.public_reactions_count >= devCommunity.minReactions)
+        .sort((a, b) => b.public_reactions_count - a.public_reactions_count)
+        .slice(0, devCommunity.limitPerTag);
+      logSource(name, all.length, inWindow.length, since, `, ${picked.length} tanesi ≥${devCommunity.minReactions} reaksiyonlu (top=${top})`);
+      for (const a of picked) {
+        if (found.has(a.id)) continue;
+        found.set(a.id, {
+          id: `dev:${a.id}`,
+          title: a.title,
+          url: a.url,
+          link: a.canonical_url && a.canonical_url !== a.url ? a.canonical_url : null,
+          source: 'DEV Community',
+          category: t.category,
           kind: 'community',
-          date: new Date(p.created_utc * 1000).toISOString(),
-          text: strip(p.selftext || '').slice(0, 1200),
-          score: p.score,
-          comments: p.num_comments,
-        }));
-      return { total: all.length, inWindow: inWindow.length, picked };
-    })
-  );
-  const items = [];
-  results.forEach((r, n) => {
-    const name = `r/${reddit.subreddits[n].name}`;
-    if (r.status === 'rejected') return console.warn(`[uyarı] ${name} alınamadı: ${r.reason?.message}`);
-    const { total, inWindow, picked } = r.value;
-    logSource(name, total, inWindow, since, `, ${picked.length} tanesi eşik/filtreleri geçti`);
-    items.push(...picked);
-  });
-  return items;
+          date: new Date(a.published_at).toISOString(),
+          text: strip(a.description || '').slice(0, 1200),
+          score: a.public_reactions_count,
+          comments: a.comments_count ?? null,
+        });
+      }
+    } catch (e) {
+      console.warn(`[uyarı] ${name} alınamadı: ${e.message}`);
+    }
+  }
+  return [...found.values()];
 }
