@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-10",
+  "items": [
+    {
+      "id": "https://github.com/vercel/next.js/releases/tag/v16.4.6",
+      "title": "v16.4.6",
+      "url": "https://github.com/vercel/next.js/releases/tag/v16.4.6",
+      "source": "Next.js Releases",
+      "category": "Next.js",
+      "kind": "release",
+      "date": "2026-11-09T20:27:17.000Z",
+      "text": "Note This release is backporting bug fixes. It does not include all pending features/changes on canary. Core Changes [lts-active] Pin Tailwind to 4.3.3 in create-next-app and tests (#101061, #101176) (#101307) [lts-active] Automatically compress route handler responses if not already compressed (#101280) [lts-active] Turbopack GC fixes for dev (#100279, #100370) (#101308) Credits Huge thanks to @lukesandberg and @eps1lon for helping!"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-sandbox-snapshot-creation-is-now-up-to-10x-faster",
+      "title": "Vercel Sandbox snapshot creation is now up to 10x faster",
+      "url": "https://vercel.com/changelog/vercel-sandbox-snapshot-creation-is-now-up-to-10x-faster",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-09T21:00:00.000Z",
+      "text": "now creates snapshots up to 10x faster. Median time to snapshot is under 0.4 seconds, down from 4.4 seconds. Snapshot restore speed has also improved by 50% from 500ms to 250ms at p50.Vercel Sandbox Snapshots are now able to write and restore by re-using frames within the Vercel Hive Snapshot (VHS) format. VHS now indexes data in a more efficient way which means that more read and write operations can be done in parallel. Snapshots can now restore more of your Sandbox base image in parallel with user data, leading to overall faster operations. Persistent sandboxes, the default, snapshot automatically when a session stops and resume from the latest snapshot. This applies to all new snapshots, with nothing to configure. Existing snapshots keep the previous format. Learn more in the .snapshots documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/blog/ai-gateway-production-index-november-2026",
+      "title": "Decision models take 26% of requests; Anthropic now wins new teams 2:1",
+      "url": "https://vercel.com/blog/ai-gateway-production-index-november-2026",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-09T05:00:00.000Z",
+      "text": "AI Gateway Production Index — November 2026 Every month, routes more than 100 trillion tokens between production applications and AI labs. That traffic gives us a view of what AI usage looks like in today’s enterprise and startup landscape across language, decision, voice, image, and video models. We publish it here monthly. See the Production Index reports from , , and .AI GatewayAugustSeptemberOctober Production AI is splitting into two jobs: generation and judgment. Until recently, when software needed to make a quick call, a team could use either a fixed rule that was cheap but rigid, or a language model that was smart but slow and expensive. Decision models are now a third option. They classify, score, or pick between choices instead of generating text, and cost about a seventieth as much per request as a language model. They arrived on AI Gateway in mid-September, and there are now 15 decision models available from eight different vendors. In October, nearly a third of paid teams on AI Gateway used a decision model. About 11% of paid teams used a decision model without sending a single request to a text-generating model. Decision models cost far less per token and give very s"
+    },
+    {
+      "id": "https://vercel.com/changelog/glm-5-3-flash-is-now-available-in-token-pass",
+      "title": "GLM 5.3 Flash is now available in Token Pass",
+      "url": "https://vercel.com/changelog/glm-5-3-flash-is-now-available-in-token-pass",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-09T00:00:00.000Z",
+      "text": "now includes , alongside Kimi K3, GLM 5.3, and DeepSeek V4.1 Flash (with more models to come). GLM 5.3 Flash is Z.ai's native multimodal coding model with a 1M-token context window.Token PassGLM 5.3 Flash Token Pass is a $30/month subscription on Pro teams that grants $80 in monthly credit and runs through . Use it with any coding agent such as , , , etc. or build your own with the AI SDK, with Zero Data Retention enabled by default.AI GatewayfxPiClineCommand Code Add GLM 5.3 Flash from the in your team's AI Gateway dashboard, or read the for setup.Token Pass pageToken Pass documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/workflow-writes-now-use-websockets-on-vercel",
+      "title": "Workflow SDK now writes over WebSockets on Vercel",
+      "url": "https://vercel.com/changelog/workflow-writes-now-use-websockets-on-vercel",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-09T00:00:00.000Z",
+      "text": "The now sends event writes and stream writes to over a WebSocket by default, replacing one HTTP request per write, or per write group for streams. No code change is needed beyond upgrading to or later.Workflow SDKVercel Workflowsworkflow@5.2.0 Once you deploy the upgrade, new runs use it. In-flight runs finish on the deployment they started on. Existing streaming code works as is. A step that writes a burst of chunks, like AI tokens, sends them over the WebSocket once it opens: In a replaying an AI agent's token stream, v5.2.0, which writes streams over a WebSocket by default, delivered the full response 4.2× faster than v4.8.12, with no chunk delayed over a second.benchmark Every step start and completion is an event write, now sent over the WebSocket, so workflows with many steps make fewer HTTP requests. The added efficiency also improves performance and reduces costs. The queue handler opens the connection for every delivery. Read the to get started. If you're on 4.x, start with the , since v5 is a major release.Vercel World documentationupgrade guide Read more Streams keep pace with AI output Fewer HTTP requests for event writes Get started"
+    },
+    {
+      "id": "https://vercel.com/changelog/build-disk-space-on-vercel-increased-to-64-gb",
+      "title": "Build disk space on Vercel increased to 64 GB",
+      "url": "https://vercel.com/changelog/build-disk-space-on-vercel-increased-to-64-gb",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-09T00:00:00.000Z",
+      "text": "Disk space for has increased from 32 GB to 64 GB on Basic and Standard machines, matching the capacity already available on Enhanced and Turbo.Vercel builds The additional space provides more room for the packages your project uses and the files generated during a build, reducing the risk of running out of disk space. The change applies automatically across all plans and build machine types at no additional charge, with no configuration changes required. Learn more in the .build machine documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-container-registry-now-supports-2-gb-compressed-image-layers",
+      "title": "Vercel Container Registry now supports 2 GB compressed image layers",
+      "url": "https://vercel.com/changelog/vercel-container-registry-now-supports-2-gb-compressed-image-layers",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-09T00:00:00.000Z",
+      "text": "now supports compressed image layers of up to 2 GB each, up from 500 MB, the total image size limit stays 15 GB. Vercel Container Registry The registry works with standard workflows like , , and , and pushing an image creates the repository on the fly.docker pushdocker pulldocker tag Repositories can be for read-only pull access by any Vercel team, or up to 100 from the dashboard or with . The Vercel Managed Images that Vercel Sandbox runs on are served from ordinary public repositories, built with the same public-repository feature any team can use for its own images.made publicshared with specific teamsvercel vcr permissions Manage repositories, images, and tags with the in Vercel CLI v58.3.0 or later, and log CI workflows in from GitHub Actions with the using GitHub OIDC, which removes the need for long-lived registry credentials. If background optimization of a pushed image fails, the image shows an error status in the dashboard, and pushing the same image again retries the conversion. CLI commandsvercel vcr actionvercel/vcr-action/login See the for the full setup.documentation Read more"
+    },
+    {
+      "id": "b70adc3e-5b7f-4101-820d-fe4acd1b0d22",
+      "title": "How many engineers does it take to build a social network?",
+      "url": "https://expo.dev/blog/how-many-engineers-does-it-take-to-build-a-social-network",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-09T19:15:06.000Z",
+      "text": "I built and launched Pollzy on iOS and Android as a solo developer, despite having never built a mobile app before."
+    },
+    {
+      "id": "https://socket.dev/blog/bee-js-compromise?utm_medium=feed",
+      "title": "Malicious bee-js npm Release and Swarm Desktop Releases Deliver SleepyDuck Ethereum C2 Backdoor",
+      "url": "https://socket.dev/blog/bee-js-compromise?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-09T14:52:15.147Z",
+      "text": "Socket’s Threat Research Team analyzed the November 9, 2026 compromise of Ethersphere’s release pipeline, in which a threat actor used the project’s own GitHub automation to publish a malicious @ethersphere/bee-js 13.3.0 to npm and a trojanized Swarm Desktop 0.56.2 release on GitHub. Both artifacts carry a small loader that fetches JavaScript from api[.]frameworkmetrics[.]xyz and executes it with full Node.js privileges. The Ethereum smart contract that tells the later stages where to connect, the wallet that controls it, and the stage-3 implant files are the same ones Pluto Security documented on October 1, 2026 in its analysis of the SleepyDuck / EtherDuck Open VSX campaign. npm removed 13.3.0 about 75 minutes after it was published; the Swarm Desktop release stayed up for about eight and a half hours. @ethersphere/bee-js 13.3.0 (npm): scripts/generate-version.cjs was rewritten into a remote-code loader and promoted to a postinstall hook. The package was published by Ethersphere’s legitimate trusted-publishing workflow with valid SLSA provenance, and the loader ran three times inside that publishing job. Swarm Desktop 0.56.2 (GitHub release): all nine Linux, macOS and Windows pac"
+    },
+    {
+      "id": "lobsters:https://lobste.rs/s/vtjjbc",
+      "title": "What's new in Node.js 27",
+      "url": "https://lobste.rs/s/vtjjbc/what_s_new_node_js_27",
+      "link": "https://nodejsdesignpatterns.com/blog/whats-new-in-nodejs-27/",
+      "source": "Lobsters",
+      "category": "Node.js",
+      "kind": "community",
+      "date": "2026-11-09T11:48:55.000Z",
+      "text": "Comments",
+      "score": null,
+      "comments": null
+    },
+    {
+      "id": "dev:5004421",
+      "title": "I Used gp-grid to Build a React Food Festival App with Advanced Data Grid Features",
+      "url": "https://dev.to/hadil/i-used-gp-grid-to-build-a-react-food-festival-app-with-advanced-data-grid-features-3l22",
+      "link": null,
+      "source": "DEV Community",
+      "category": "React",
+      "kind": "community",
+      "date": "2026-11-10T09:04:10.000Z",
+      "text": "I had already explored gp-grid's features and capabilities, and I wrote gp-grid: A Free, Open-Source...",
+      "score": 74,
+      "comments": 4
+    }
+  ]
+}
