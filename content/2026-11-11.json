@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-11",
+  "items": [
+    {
+      "id": "GHSA-xqc2-xf4c-x3h3",
+      "title": "React: Unauthenticated Remote Code Execution in React Server Components",
+      "url": "https://github.com/advisories/GHSA-xqc2-xf4c-x3h3",
+      "source": "GitHub Advisory",
+      "category": "React",
+      "kind": "security",
+      "date": "2026-11-10T22:44:12.000Z",
+      "text": "### Impact Crafted payloads targeting frameworks supporting React Server Components can lead to remote code execution. This only affects extremely rare cases where responses transport multiple typed arrays and an attacker-controlled value. Updating immediately is recommended. The vulnerability exists in versions 19.0.0 through 19.0.8, 19.1.0 through 19.1.9, 19.2.0 through 19.2.8 and 19.3.0 of: - react-server-dom-webpack - react-server-dom-parcel - react-server-dom-turbopack ### Patches Fixes were back ported to versions 19.0.09, 19.1.10, 19.2.9, and 19.3.1. If applications are using any of the above packages please upgrade to any of the fixed versions immediately. If an app’s React code does not use a server, the app is not affected by this vulnerability. If an app does not use a framework, bundler, or bundler plugin that supports React Server Components, the app is not affected by this vulnerability.",
+      "severity": "critical",
+      "cvss": 9.5,
+      "cve": "CVE-2026-126187",
+      "affected": [
+        "react-server-dom-parcel >= 19.0.0, < 19.0.9",
+        "react-server-dom-parcel >= 19.1.0, < 19.1.10",
+        "react-server-dom-parcel >= 19.2.0, < 19.2.9",
+        "react-server-dom-parcel >= 19.3.0, < 19.3.1",
+        "react-server-dom-turbopack >= 19.0.0, < 19.0.9",
+        "react-server-dom-turbopack >= 19.1.0, < 19.1.10",
+        "react-server-dom-turbopack >= 19.2.0, < 19.2.9",
+        "react-server-dom-turbopack >= 19.3.0, < 19.3.1",
+        "react-server-dom-webpack >= 19.0.0, < 19.0.9",
+        "react-server-dom-webpack >= 19.1.0, < 19.1.10",
+        "react-server-dom-webpack >= 19.2.0, < 19.2.9",
+        "react-server-dom-webpack >= 19.3.0, < 19.3.1"
+      ],
+      "patched": [
+        "19.0.9",
+        "19.1.10",
+        "19.2.9",
+        "19.3.1",
+        "19.0.9",
+        "19.1.10",
+        "19.2.9",
+        "19.3.1",
+        "19.0.9",
+        "19.1.10",
+        "19.2.9",
+        "19.3.1"
+      ]
+    },
+    {
+      "id": "https://vercel.com/changelog/speed-insights-and-web-analytics-now-support-custom-environments",
+      "title": "Speed Insights and Web Analytics now support custom environments",
+      "url": "https://vercel.com/changelog/speed-insights-and-web-analytics-now-support-custom-environments",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-10T00:00:00.000Z",
+      "text": "and now fully support .Speed InsightsWeb Analyticscustom environments Previously, data captured on deployments to a custom environment was attributed to the Preview environment. That data is now attributed to the custom environment it came from, so you can track performance and traffic for staging, QA, or canary environments separately from Production and Preview. You can view this data in several places: This change only affects how data is attributed. No new data points are collected, and no configuration changes are needed. Custom environments are available on Pro and Enterprise plans. Learn more in the .environments documentation Read more use the Environment dropdown in Speed Insights and Web Analytics to pick a custom environmentDashboard: query it with the commandCLI:vc metrics filter and break down by environmentQuery builder: query it programmatically (Web Analytics only)Aggregation API:"
+    },
+    {
+      "id": "911906ed-c55f-42f5-9dcd-2c9526e8bf36",
+      "title": "How to iterate faster with Expo, Supabase, and AI",
+      "url": "https://expo.dev/blog/iteration-speed-expo-supabase-ai",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-10T16:15:37.000Z",
+      "text": "Quilia's only developer ships five JavaScript updates a day. Here's the agent loop, Expo pipeline, and Supabase setup that make it possible."
+    }
+  ]
+}
