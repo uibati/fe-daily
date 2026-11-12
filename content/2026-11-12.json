@@ -1,0 +1,85 @@
+{
+  "date": "2026-11-12",
+  "items": [
+    {
+      "id": "https://github.com/nodejs/node/releases/tag/v26.13.1",
+      "title": "2026-11-11, Version 26.13.1 'Lithium' (LTS), @aduh95",
+      "url": "https://github.com/nodejs/node/releases/tag/v26.13.1",
+      "source": "Node.js Releases",
+      "category": "Node.js",
+      "kind": "release",
+      "date": "2026-11-11T16:44:25.000Z",
+      "text": "This is a security release. Notable Changes (CVE-2026-123863) http2: release headers when a stream is removed (Matteo Collina) – High (CVE-2026-123864) tls,http: prevent nested parser execution from empty writes (Matteo Collina) – High (CVE-2026-123865) http2: detect streams abandoned by nghttp2 (Matteo Collina) – High (CVE-2026-123866) http2: retain buffers until socket writes finish (Matteo Collina) – High (CVE-2026-123872) tls: disable resumption for mTLS with no session id context (Tim Perry) – High (CVE-2026-123872) tls: don't allow renegotiation or HRR to change SNI (Tim Perry) – High (CVE-2026-123872) tls: don't allow TLS resumption to change SNI (Tim Perry) – High (CVE-2026-123874) http2: retain streams during pending writes (Matteo Collina) – High (CVE-2026-126051) tls: fix remotely reachable TLS server crash (Tim Perry) – High (CVE-2026-123828) http2: avoid overflowing ALTSVC buffers (Matteo Collina) – Medium (CVE-2026-123867) tls: apply the CA of SNI contexts without a certificate (Matteo Collina) – Medium (CVE-2026-123868) http2: charge inbound DATA retained by streams to maxSessionMemory (Matteo Collina) – Medium (CVE-2026-123871) http: redact proxy credentials in inva"
+    },
+    {
+      "id": "https://github.com/nodejs/node/releases/tag/v24.22.3",
+      "title": "2026-11-11, Version 24.22.3 'Krypton' (LTS), @aduh95",
+      "url": "https://github.com/nodejs/node/releases/tag/v24.22.3",
+      "source": "Node.js Releases",
+      "category": "Node.js",
+      "kind": "release",
+      "date": "2026-11-11T16:44:08.000Z",
+      "text": "This is a security release. Notable Changes (CVE-2026-123863) http2: release headers when a stream is removed (Matteo Collina) – High (CVE-2026-123864) tls,http: prevent nested parser execution from empty writes (Matteo Collina) – High (CVE-2026-123865) http2: detect streams abandoned by nghttp2 (Matteo Collina) – High (CVE-2026-123866) http2: retain buffers until socket writes finish (Matteo Collina) – High (CVE-2026-123872) tls: disable resumption for mTLS with no session id context (Tim Perry) – High (CVE-2026-123872) tls: don't allow renegotiation or HRR to change SNI (Tim Perry) – High (CVE-2026-123872) tls: don't allow TLS resumption to change SNI (Tim Perry) – High (CVE-2026-123874) http2: retain streams during pending writes (Matteo Collina) – High (CVE-2026-126051) tls: fix remotely reachable TLS server crash (Tim Perry) – High (CVE-2026-123828) http2: avoid overflowing ALTSVC buffers (Matteo Collina) – Medium (CVE-2026-123867) tls: apply the CA of SNI contexts without a certificate (Matteo Collina) – Medium (CVE-2026-123868) http2: charge inbound DATA retained by streams to maxSessionMemory (Matteo Collina) – Medium (CVE-2026-123871) http: redact proxy credentials in inva"
+    },
+    {
+      "id": "https://github.com/nodejs/node/releases/tag/v22.23.5",
+      "title": "2026-11-11, Version 22.23.5 'Jod' (LTS), @aduh95",
+      "url": "https://github.com/nodejs/node/releases/tag/v22.23.5",
+      "source": "Node.js Releases",
+      "category": "Node.js",
+      "kind": "release",
+      "date": "2026-11-11T16:44:03.000Z",
+      "text": "This is a security release. Notable Changes (CVE-2026-123863) http2: release headers when a stream is removed (Matteo Collina) – High (CVE-2026-123864) tls,http: prevent nested parser execution from empty writes (Matteo Collina) – High (CVE-2026-123865) http2: detect streams abandoned by nghttp2 (Matteo Collina) – High (CVE-2026-123866) http2: retain buffers until socket writes finish (Matteo Collina) – High (CVE-2026-123872) tls: disable resumption for mTLS with no session id context (Tim Perry) – High (CVE-2026-123872) tls: don't allow renegotiation or HRR to change SNI (Tim Perry) – High (CVE-2026-123872) tls: don't allow TLS resumption to change SNI (Tim Perry) – High (CVE-2026-123874) http2: retain streams during pending writes (Matteo Collina) – High (CVE-2026-123828) http2: avoid overflowing ALTSVC buffers (Matteo Collina) – Medium (CVE-2026-123867) tls: apply the CA of SNI contexts without a certificate (Matteo Collina) – Medium (CVE-2026-123868) http2: charge inbound DATA retained by streams to maxSessionMemory (Matteo Collina) – Medium (CVE-2026-123871) http: redact proxy credentials in invalid proxy URL errors (Matteo Collina) – Medium (CVE-2026-123875) http2: guard agai"
+    },
+    {
+      "id": "/blog/release/v26.13.1?1794415520703",
+      "title": "Node.js 26.13.1 (LTS)",
+      "url": "https://nodejs.org/en/blog/release/v26.13.1",
+      "source": "Node.js Blog",
+      "category": "Node.js",
+      "kind": "blog",
+      "date": "2026-11-11T16:45:20.000Z",
+      "text": ""
+    },
+    {
+      "id": "/blog/release/v24.22.3?1794415511877",
+      "title": "Node.js 24.22.3 (LTS)",
+      "url": "https://nodejs.org/en/blog/release/v24.22.3",
+      "source": "Node.js Blog",
+      "category": "Node.js",
+      "kind": "blog",
+      "date": "2026-11-11T16:45:11.000Z",
+      "text": ""
+    },
+    {
+      "id": "/blog/release/v22.23.5?1794415498310",
+      "title": "Node.js 22.23.5 (LTS)",
+      "url": "https://nodejs.org/en/blog/release/v22.23.5",
+      "source": "Node.js Blog",
+      "category": "Node.js",
+      "kind": "blog",
+      "date": "2026-11-11T16:44:58.000Z",
+      "text": ""
+    },
+    {
+      "id": "/blog/vulnerability/november-2026-security-releases?1794355200000",
+      "title": "Wednesday, November 11, 2026 Security Releases",
+      "url": "https://nodejs.org/en/blog/vulnerability/november-2026-security-releases",
+      "source": "Node.js Blog",
+      "category": "Node.js",
+      "kind": "blog",
+      "date": "2026-11-11T00:00:00.000Z",
+      "text": ""
+    },
+    {
+      "id": "8a351076-4f8e-4a73-8425-0b0dd7e38e56",
+      "title": "How five web developers built an iOS keyboard extension with Expo",
+      "url": "https://expo.dev/blog/supernova-ios-keyboard-extension-expo",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-11T14:15:30.000Z",
+      "text": "Supernova's five web developers run three Expo apps, including Superflow, a voice keyboard with a 17,000-line Swift iOS extension."
+    }
+  ]
+}
