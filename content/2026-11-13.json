@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-13",
+  "items": [
+    {
+      "id": "https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.1.0",
+      "title": "2026-11-12, Version 27.0.0-alpha.0.1.0 (Alpha), @aduh95",
+      "url": "https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.1.0",
+      "source": "Node.js Releases",
+      "category": "Node.js",
+      "kind": "release",
+      "date": "2026-11-12T13:35:13.000Z",
+      "text": "Notable Changes [33d4e6c73a] - (SEMVER-MINOR) child_process: add subprocess.timedOut (Marco) #66639 [edc7ec4a77] - (SEMVER-MINOR) crypto: make X.509 inspection guards explicit (Filip Skokan) #67245 [0882e9729b] - (SEMVER-MINOR) crypto: add X.509 generation with CSR support (Filip Skokan) #67245 [2360d3860e] - (SEMVER-MINOR) dns: coalesce identical concurrent lookup() requests (Orgad Shaneh) #62599 [dc4aa75983] - doc: add efekrskl to collaborators (Efe Karasakal) #67376 [9695304ab8] - doc: add Philipp Dunkel to contributors (Philipp Dunkel) #67378 [41db1f7b6b] - doc: add christianaurichzm to collaborators (Christian Aurich Zanettini Martins) #67377 [6b8a90d41d] - (SEMVER-MINOR) http: batch body spans per parser execute (Guilherme Araújo) #67187 [8ffcb3ee55] - (SEMVER-MINOR) sea: generate a compile cache for the VFS modules (Matteo Collina) #66768 [2bbcfa0718] - (SEMVER-MINOR) worker: preload streams into startup snapshot (Matteo Collina) #66311 Commits [81d2321054] - benchmark: add URLSearchParams iterator consumers benchmark (Kevin Gibbons) #66837 [04b4552a77] - Revert \"benchmark: add URLSearchParams iterator consumers benchmark\" (Antoine du Hamel) #66837 [3ac0b42fb6] - benchmark: "
+    },
+    {
+      "id": "/blog/release/v27.0.0-alpha.0.1.0?1794490570130",
+      "title": "Node.js 27.0.0-alpha.0.1.0 (Alpha)",
+      "url": "https://nodejs.org/en/blog/release/v27.0.0-alpha.0.1.0",
+      "source": "Node.js Blog",
+      "category": "Node.js",
+      "kind": "blog",
+      "date": "2026-11-12T13:36:10.000Z",
+      "text": ""
+    },
+    {
+      "id": "834676f3-4559-4bda-aaef-4fb5b8dd45a0",
+      "title": "Introducing Expo Simulators: cloud simulators built for agents",
+      "url": "https://expo.dev/blog/introducing-expo-simulators-cloud-simulators-built-for-agents",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-12T16:45:51.000Z",
+      "text": "Expo Simulators gives your agents cloud iOS simulators and Android emulators to install builds, drive the app, and return screen recordings as proof of work."
+    },
+    {
+      "id": "https://socket.dev/blog/japan-cyberattack-surge?utm_medium=feed",
+      "title": "Cyberattacks Are Skyrocketing in Japan as Researchers Trace AI-Assisted Intrusions",
+      "url": "https://socket.dev/blog/japan-cyberattack-surge?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-12T14:51:52.947Z",
+      "text": "Japan is facing an extraordinary surge in cyberattacks, with a record 233 security incidents publicly disclosed in October alone. That's roughly 2.4 times the previous monthly record, according to Trend Micro data reported by TV Asahi. Cyberattacks are rising around the world, but the pace of disclosures in Japan is staggering. Nearly every day has dragged another affected company, service provider, or public institution into the headlines. The volume of exposed information is growing even faster. An analysis by MM Research Institute estimates that approximately 185 million personal information records were exposed or potentially exposed in incidents disclosed during October, nearly four times the total reported for all of 2025. The number of large breaches has also increased sharply, with 30 incidents involving at least one million records disclosed in October. The disclosures have implicated major retailers, technology companies, financial services providers, and government agencies. On November 9, Japanese furniture giant Nitori disclosed that unauthorized access to its systems may have exposed up to 37.62 million customer information records. Days earlier, email service provide"
+    }
+  ]
+}
