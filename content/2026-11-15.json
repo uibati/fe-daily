@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-15",
+  "items": [
+    {
+      "id": "https://socket.dev/blog/eslint-ends-paid-contributor-program?utm_medium=feed",
+      "title": "ESLint Ends Paid Contributor Program as AI Upends Open Source Collaboration",
+      "url": "https://socket.dev/blog/eslint-ends-paid-contributor-program?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-14T17:27:29.411Z",
+      "text": "ESLint is retiring its contributor pool after five years, citing growing difficulties with AI-generated contributions and disputes over whether contributors deserved payment for work produced with AI assistance. In a November 13 announcement, ESLint creator Nicholas C. Zakas said the program had paid outside contributors more than $51,000 and helped recruit several future team members. But the increasing volume of AI-generated issues and pull requests, along with accusations about undisclosed AI use, had made the program increasingly difficult to administer. The decision comes as open source projects across the ecosystem are reconsidering how they accept, review, and reward contributions. Some are restricting outside pull requests, others are tightening their AI policies, and several are struggling with the additional review work created by AI-assisted development. ESLint Ends Five-Year Experiment in Paying Contributors # ESLint introduced its contributor pool in 2022 to compensate people outside the core team for meaningful contributions to the project. The program initially allocated $1,000 per month before switching to a model that reserved 10% of monthly income for contributors"
+    }
+  ]
+}
