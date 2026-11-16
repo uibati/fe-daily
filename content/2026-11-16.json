@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-16",
+  "items": [
+    {
+      "id": "dev:5041919",
+      "title": "How to Build an Offline, On-Device Voice-to-Voice AI Agent in React Native",
+      "url": "https://dev.to/ofer_fryman_69213ebc646a7/how-to-build-an-offline-on-device-voice-to-voice-ai-agent-in-react-native-2a69",
+      "link": null,
+      "source": "DEV Community",
+      "category": "React Native",
+      "kind": "community",
+      "date": "2026-11-15T14:33:10.000Z",
+      "text": "We’ve spent the past year helping teams like Volkswagen, Verbali and LunaFit ship voice agents that...",
+      "score": 21,
+      "comments": 3
+    }
+  ]
+}
