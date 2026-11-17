@@ -1,0 +1,100 @@
+{
+  "date": "2026-11-17",
+  "items": [
+    {
+      "id": "GHSA-mfr8-8qww-v76h",
+      "title": "Next.js: Information disclosure across root params when a 'use cache' function is called through unstable_cache()",
+      "url": "https://github.com/advisories/GHSA-mfr8-8qww-v76h",
+      "source": "GitHub Advisory",
+      "category": "Next.js",
+      "kind": "security",
+      "date": "2026-11-16T18:51:22.000Z",
+      "text": "Next.js applications with `'use cache'` can disclose cached data across root params when the same `'use cache'` function is called both directly during rendering and through `unstable_cache()`, and that function reads a root param. Root params are route parameters of the root layout, and applications commonly use them to scope data, for example per locale. During a cold process start, a cross-request deduplication race allowed an `unstable_cache()` call to join the in-flight fill of a concurrent direct call and receive its result, bypassing the root param check that would normally reject it. `unstable_cache()` then stored that result under a cache key without root params, so subsequent requests for other root param values received the same entry until it is revalidated or evicted. Cached data produced for one root param value is returned to requests for other values. Exploitation requires the `unstable_cache()` request to arrive while the function's first fill after a process start is still in flight. Outside this race, the nesting already throws an error: `'use cache' inside unstable_cache() is unsupported`, and avoiding it is a complete workaround.",
+      "severity": "medium",
+      "cvss": 6.3,
+      "cve": "CVE-2026-119790",
+      "affected": [
+        "next >= 16.3.0, <= 16.4.4"
+      ],
+      "patched": [
+        "16.4.5"
+      ]
+    },
+    {
+      "id": "https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.1.1",
+      "title": "2026-11-16, Version 27.0.0-alpha.0.1.1 (Alpha), @aduh95",
+      "url": "https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.1.1",
+      "source": "Node.js Releases",
+      "category": "Node.js",
+      "kind": "release",
+      "date": "2026-11-17T08:40:24.000Z",
+      "text": "Notable Changes [e0c71bcd1c] - tools: notarize bin/node in the darwin tarballs (Ulises Gascón) #67143 Commits [aa0572bada] - build: do not include vendored simdutf with --shared-simdutf (Yao Zi) #67410 [a5672e8023] - build: enable pie on linux (Chengzhong Wu) #67386 [cfb550171d] - deps: V8: backport a05177279022 (René) #67416 [a92ee337b1] - deps: update nghttp3 to 1.19.0 (Node.js GitHub Bot) #67333 [f775f92e2e] - deps: V8: backport 2444c109f4f8 (Austin Burdine) #66736 [a4787636cb] - deps: V8: cherry-pick 497c2e6a2434 (Dominik Inführ) #66728 [7c6dd81da3] - doc: fix typo in releases.md (Ultron) #67463 [9fda0620f2] - doc: add aduh95 as last security release stewards (Antoine du Hamel) #67434 [a23a18b8e5] - doc: explain how sqlite binds numbers and BigInts (Trevor Burnham) #67424 [136ae6f518] - doc: document invalid X509Certificate validity times (Sarthak Ahuja) #67406 [e396cb0bb3] - doc: explain fallback arrays in package exports targets (Manjeet Singh) #67393 [3c930d22ea] - doc: document this binding in TLS callbacks (Robert I Nilsson) #66682 [1a1489838c] - meta: update Trevor Burnham's email in .mailmap (Trevor Burnham) #67425 [17be7f1efc] - test: use relative paths within test dire"
+    },
+    {
+      "id": "/blog/release/v27.0.0-alpha.0.1.1?1794904867602",
+      "title": "Node.js 27.0.0-alpha.0.1.1 (Alpha)",
+      "url": "https://nodejs.org/en/blog/release/v27.0.0-alpha.0.1.1",
+      "source": "Node.js Blog",
+      "category": "Node.js",
+      "kind": "blog",
+      "date": "2026-11-17T08:41:07.000Z",
+      "text": ""
+    },
+    {
+      "id": "https://vercel.com/blog/agent-evals",
+      "title": "Agents are users, so your software needs evals",
+      "url": "https://vercel.com/blog/agent-evals",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-16T05:00:00.000Z",
+      "text": "Agents are now users of software, doing work on people's behalf. Whether you're building the agent or the software it uses (API, CLI, MCP server, SDK), evals give you a way to measure how well that work gets done. Agents probably missed your launch video and billboard on Highway 101, but they still go through the same funnel a human does to find and use a product: , , , and .DiscoverySelectionAccessSuccess You can build evals for any stage of this funnel. Here, we’ll focus on the final stage, : whether the agent completes the user’s task correctly.Success That's more difficult to check than it sounds. An agent can place a “successful” order for a hot latte when the user asked for an iced one. The request worked, so the logs in your Observability stack look fine. And because LLM outputs vary between runs, one good manual test can’t tell you whether a fix worked. You need to repeat the same tasks and grade the outcomes, before and after the change. That’s what an eval is, a test you run many times and score. Here’s how we build one. If a test asks “did it work?”, an eval asks “how often does it work, and how well?” We group agentic software tests by how many LLM calls they typically "
+    },
+    {
+      "id": "https://vercel.com/changelog/set-budgets-for-projects-and-products-in-spend-management",
+      "title": "Set budgets for projects and products in Spend Management",
+      "url": "https://vercel.com/changelog/set-budgets-for-projects-and-products-in-spend-management",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-16T00:00:00.000Z",
+      "text": "now supports budgets for individual projects and products, alongside existing team budgets. Spend Management Only team and project budgets support automatic pausing of production deployments. Open the new to manage budgets, view spend for the current billing cycle, and see which thresholds have been reached. Vercel sends notifications at 50%, 75%, and 100% of each budget.Spend Management page You can also manage budgets with the :Vercel CLI Spend Management is included at no additional cost for Pro teams and Enterprise teams on Flexible Commitment plans. Customers in the can also set a budget across all teams in their organization.Organizations private beta Learn more in the .Spend Management documentation Read more Track spend for one project and optionally pause its production deployments when the budget is reached, without pausing other projects.Project budgets: Track spend on one product, such as Fast Data Transfer, across your team.Product budgets:"
+    },
+    {
+      "id": "https://socket.dev/blog/pnpm-introduces-new-lockfile-format?utm_medium=feed",
+      "title": "pnpm Introduces New Lockfile Format to Reduce Git Merge Conflicts",
+      "url": "https://socket.dev/blog/pnpm-introduces-new-lockfile-format?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-17T07:02:53.649Z",
+      "text": "pnpm has introduced an experimental lockfile format designed to reduce Git merge conflicts by changing how dependency relationships are recorded. The new format, available starting with pnpm 12.19.0, previews changes planned for pnpm 13 and is available as an opt-in setting. The change addresses a common frustration in JavaScript development, particularly in projects with multiple contributors or large dependency trees. Updates to dependencies can produce substantial changes in pnpm-lock.yaml, creating merge conflicts when developers work on separate branches. The new format aims to reduce those conflicts by keeping related dependency information together and limiting the number of lines affected when peer dependencies change. # The existing v9 lockfile format uses separate packages and snapshots sections to store package metadata and resolved dependency relationships. The experimental v13 format consolidates that information into a single packages section. The top-level importers section is also renamed to projects. Package references now use bare version numbers rather than identifiers containing peer dependency or patch suffixes. Peer dependency bindings are represented through "
+    },
+    {
+      "id": "dev:5049539",
+      "title": "PitchPulse — Rehearsing Recovery for High-Pressure Speaking (Powered by Presage SmartSpectra)",
+      "url": "https://dev.to/dj29/pitchpulse-rehearsing-recovery-for-high-pressure-speaking-powered-by-presage-smartspectra-3387",
+      "link": null,
+      "source": "DEV Community",
+      "category": "React",
+      "kind": "community",
+      "date": "2026-11-16T17:08:47.000Z",
+      "text": "This is a submission for the Presage SmartSpectra SDK Challenge What I...",
+      "score": 47,
+      "comments": 9
+    },
+    {
+      "id": "dev:5031044",
+      "title": "When an import becomes a zip bomb: bundle regressions in Next.js",
+      "url": "https://dev.to/bra31k/the-import-was-7-kib-the-regression-was-153-kib-4jbj",
+      "link": "https://bra31k.dev/en/blog/bundle-size-regressions",
+      "source": "DEV Community",
+      "category": "React",
+      "kind": "community",
+      "date": "2026-11-16T12:06:54.000Z",
+      "text": "So, AI-assisted coding or vibe coding is a fact of life now, but I'd rather not tell you guys about...",
+      "score": 20,
+      "comments": 1
+    }
+  ]
+}
