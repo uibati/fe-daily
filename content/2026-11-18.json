@@ -1,0 +1,114 @@
+{
+  "date": "2026-11-18",
+  "items": [
+    {
+      "id": "GHSA-vc7v-qv4w-wrv8",
+      "title": "Next.js: Cache leak across root param values in nested 'use cache' functions via delayed inner stream metadata",
+      "url": "https://github.com/advisories/GHSA-vc7v-qv4w-wrv8",
+      "source": "GitHub Advisory",
+      "category": "Next.js",
+      "kind": "security",
+      "date": "2026-11-17T16:13:26.000Z",
+      "text": "With Cache Components enabled, an outer `'use cache'` function can be keyed incorrectly even when its inner `'use cache'` call generates a fresh entry. If the inner function reads a root param (via `next/root-params`) and returns a value that still contains pending promises — for example an object with data that is ready immediately alongside slower data — React Flight delivers the ready portion to the outer function before the inner entry has finished publishing its root param dependencies. The outer function can then finish, and its cache entry is persisted under a key that omits that root param. The entry is written once and reused for all root param values, so a response for one root param value can serve content produced for a different value. Entries written this way can also ignore tag invalidation and cache lifetimes of the nested caches they consumed. What values are leaked cannot be attacker controlled. Which value's content is served depends only on which invocation wrote the entry first. This is a variant of https://github.com/advisories/GHSA-h694-7cp9-m8p3 that the fix for that advisory does not cover: it does not require the inner call to be served from an existing en",
+      "severity": "medium",
+      "cvss": 6.3,
+      "cve": "CVE-2026-119351",
+      "affected": [
+        "next >= 16.2.0, <= 16.4.4"
+      ],
+      "patched": [
+        "16.4.5"
+      ]
+    },
+    {
+      "id": "/blog/how-were-using-ai-to-make-nextjs-more-secure",
+      "title": "How we're using AI to make Next.js more secure",
+      "url": "https://nextjs.org/blog/how-were-using-ai-to-make-nextjs-more-secure",
+      "source": "Next.js Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-17T20:00:00.000Z",
+      "text": "Why you're seeing more Next.js security advisories, and what we're doing about it."
+    },
+    {
+      "id": "https://vercel.com/changelog/standard-build-billing-new-teams",
+      "title": "Standard builds move to usage-based billing for new teams",
+      "url": "https://vercel.com/changelog/standard-build-billing-new-teams",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-17T20:00:00.000Z",
+      "text": "Starting today, new Pro and Enterprise teams no longer include a Standard build slot. This brings Standard builds under the same usage-based billing model as other build machines. On Pro, Standard builds cost $0.014 per build minute, and your monthly usage credit applies to build usage. Enterprise rates follow your contract. Standard builds remain billable after switching from Elastic to Standard for teams covered by this change. Select a build machine in or , or read more about .team settingsproject settingsmanaging your builds Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-blob-now-supports-ttls-for-automatic-deletion",
+      "title": "Vercel Blob now supports TTLs for automatic deletion",
+      "url": "https://vercel.com/changelog/vercel-blob-now-supports-ttls-for-automatic-deletion",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-17T18:00:00.000Z",
+      "text": "Vercel Blob can now delete blobs automatically. Pass when you write a blob and it is deleted that many days after upload, from 1 to 730 days. The TTL counts from the blob's upload date.ttlDays Use TTLs for blobs you would otherwise delete yourself, such as session transcripts, exports, and temporary uploads. works on , , , multipart uploads, and presigned upload URLs. Every write result and response now includes , so you know when a blob is due for deletion.ttlDaysput()copy()putImage()head()expiresAt changes or removes the TTL of blobs you already have, one URL or up to 1,000 at a time, without re-uploading them.setTtl() In and later, pass to , , or , and use on existing blobs.Vercel CLI 65.16.0--ttl-daysvercel blob putput-imagecopypresignvercel blob set-ttl Setting a TTL costs one per started 60 days, on top of the write. A 7-day TTL costs one, and the 730-day maximum costs 13. Clearing a TTL and the deletions themselves are free. You can track TTL operations in the Blob section of the Observability tab.Advanced Operation npm install @vercel/blob@2.9.0 Learn more in the .Vercel Blob documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/speed-insights-now-measures-soft-navigations",
+      "title": "Speed Insights now measures soft navigations",
+      "url": "https://vercel.com/changelog/speed-insights-now-measures-soft-navigations",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-17T12:40:00.000Z",
+      "text": "now measures soft navigations: client-side route changes that update page content without a full reload. This means you can now track performance as users move through your app, not just on full-page loads.Speed Insights Speed Insights captures LCP, FCP, INP, and CLS for soft navigations and includes these measurements in your Real Experience Score. TTFB is not captured because there is no new document request. Soft-navigation tracking is enabled by default for all projects using Speed Insights, with no action required. It works with modern web frameworks such as Next.js, SvelteKit, and Nuxt, in Chromium-based browsers. In your project's , use the new filter to view , , or navigation data. Speed Insights dashboardNavigation TypeAllHardSoft Soft-navigation events count toward Speed Insights Plus usage. Existing Plus customers will receive an email with details about when billing for these events begins. For projects that newly enable Plus, these events are billed from the start. To disable soft-navigation tracking, set to in your application code and redeploy. This option requires version 2.1.0 or later:softNavsfalse@vercel/speed-insights Learn more in the .Speed Insights documentat"
+    },
+    {
+      "id": "https://vercel.com/changelog/pull-request-only-preset-now-available-for-preview-builds",
+      "title": "Pull-request-only preset now available for preview builds",
+      "url": "https://vercel.com/changelog/pull-request-only-preset-now-available-for-preview-builds",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-17T02:37:03.997Z",
+      "text": "A new Ignored Build Step preset lets you skip preview builds for branches without an open pull request. Production deployments and previews for branches with open pull requests continue to build. On GitHub and GitLab projects, skipped preview deployments are canceled before consuming any Build CPU Minutes. To enable this, open your project’s . Under , select from the menu and click .Deployments > ConfigurationIgnored Build StepOnly build previews for pull requestsBehaviorSave Learn more in the .Ignored Build Step documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/blog/eve-is-now-generally-available",
+      "title": "Introducing eve 1.0",
+      "url": "https://vercel.com/blog/eve-is-now-generally-available",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-17T00:00:00.000Z",
+      "text": "Today we're announcing , the open-source framework for building production-ready agents.eve 1.0 Since the , we've worked with early adopters to prepare eve for 1.0, shipping 230+ releases and merging thousands of pull requests. With this release, eve is now generally available.public preview in June We've made eve faster, expanded integrations, and improved observability. Security controls let you decide which actions need approval and what data gets collected. We've also made it easier for coding agents to build with, measuring that experience with a rigorous evaluation suite. With eve handling your harness and infrastructure, you and your agent can focus on building instead. The harness in eve is the loop that calls models, runs tools, and delegates work to subagents. You choose the model, add or replace tools, edit instructions, and decide which actions need approval. The open-source saves progress as the agent runs, so it can pick up from its last completed step after a crash. Multiplayer sessions and agent-to-agent calls are built in.Workflow SDK For managed hosting, deploy your eve agent to Vercel. handles durable execution, and runs agent-generated code in isolation.Vercel W"
+    },
+    {
+      "id": "https://swmansion.com/blog/react-native-to-native-migration-gobi/",
+      "title": "Migrating from React Native to Swift and Kotlin, One Feature at a Time – the Gobi Story",
+      "url": "https://swmansion.com/blog/react-native-to-native-migration-gobi/",
+      "source": "Software Mansion Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-17T00:00:00.000Z",
+      "text": "How we moved Gobi from React Native to Swift and Kotlin one feature at a time, using React islands and AI coding agents, without pausing product work."
+    },
+    {
+      "id": "https://socket.dev/blog/optimizely-supply-chain-attack?utm_medium=feed",
+      "title": "Optimizely Supply Chain Attack Distributes Malware Across Global Brands",
+      "url": "https://socket.dev/blog/optimizely-supply-chain-attack?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-18T00:17:00.921Z",
+      "text": "An attacker exploited a vulnerability in Optimizely's Web Experimentation platform on November 16, 2026, distributing malicious JavaScript through websites operated by some of the world's largest brands. Security researcher Scott Helme of Report URI identified 188 infected JavaScript snippets associated with 178 organizations, including the BBC, CNN, Zoom, GitLab, IKEA, and HSBC. The attack exposed website visitors to malware designed to replace cryptocurrency wallet addresses, steal payment information, and deliver iOS exploit kits. Optimizely Web Experimentation is used for A/B testing and website personalization. Organizations using the service embed JavaScript snippets from Optimizely's content delivery network into their websites. These snippets include an optional Project JavaScript field that allows custom code to execute across pages. The attacker inserted malicious code into that field, which was then served through Optimizely's trusted infrastructure. The affected organizations did not need to have their own websites or servers compromised for the malicious scripts to reach visitors. Optimizely confirmed that the attacker exploited a vulnerability in its Experimentation a"
+    },
+    {
+      "id": "https://socket.dev/blog/agent-framework-pypi-package-compromised-with-credential-stealer?utm_medium=feed",
+      "title": "Microsoft’s agent-framework PyPI package Compromised with Credential Stealer",
+      "url": "https://socket.dev/blog/agent-framework-pypi-package-compromised-with-credential-stealer?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-17T23:05:25.054Z",
+      "text": "Executive Summary # The Microsoft agent-framework PyPI package was compromised on November 17th, affecting versions 1.26.1 and 1.26.2. Both versions install Python startup hooks that silently collect credentials, environment data, and cloud identity tokens, then exfiltrate them to a webhook[.]site endpoint. Avoid installing either version; if installed, remove them and rotate potentially exposed credentials. Attack Analysis # On Python startup, the .pth file imports a module that launches collection in a background process/thread. Version 1.26.1 routes through agent_framework_meta.pth → agent_framework_meta/**init**.py → agent_framework_meta/_telemetry.py; 1.26.2 uses af_runtime_diag.pth → af_runtime_diag.py. The code gathers credential-related environment variables, local config/credential files, and other processes’ environments. It also requests cloud/workflow identity tokens (including Azure in both versions and GitHub Actions OIDC in 1.26.2). It serializes the results, compresses and Base64-encodes them, then POSTs them to the same concealed webhook.site endpoint: https[://]webhook[.]site/d381fd80-ec62-42ad-8f5c-d1b15103c9bb Version 1.26.1: startup hook → package initializer →"
+    }
+  ]
+}
