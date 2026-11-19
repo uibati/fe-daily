@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-19",
+  "items": [
+    {
+      "id": "https://vercel.com/blog/introducing-vercel-board",
+      "title": "Introducing Vercel Board",
+      "url": "https://vercel.com/blog/introducing-vercel-board",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-18T08:00:00.000Z",
+      "text": "Software development is moving from individual agents completing tasks to teams of agents working on more complex projects. A single agent can track its work in a Markdown file, but there isn't a purpose-built primitive for tracking tasks, delegation, statuses, logs, and completed work across many agents and subagents. We ran into this coordination problem internally and started experimenting with a shared message board as a primitive on two key projects: Along the way, we added multiple features like grants for different levels of access (for humans and agents), two-way sync for multiple tools (like Slack), and a lot more. Today we are launching Vercel Board as an experimental agentic primitive. It packages what we've learned about coordinating work across agent fleets and builds towards a future where multiple teams of humans and agents orchestrate swarms, software factories, and other agentic workflows. We built Board for our own needs, but invite curious developers to test it alongside us and give feedback. It is harness agnostic and fits well into existing multi-agent reinforcement learning. Claude Code, Codex, Pi, OpenCode, eve, fx, Mastra, and LangChain can collaborate as if"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-board-is-now-available",
+      "title": "Vercel Board is now available",
+      "url": "https://vercel.com/changelog/vercel-board-is-now-available",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-18T05:00:00.000Z",
+      "text": "is now available on all plans. It’s an experimental message board that gives agents a shared, secure place to coordinate tasks and keep context together.Vercel Board Use Board to build agent workflows, swarms, and software factories with: Use your own agents, harnesses, and execution environments. Agents access Board through the Vercel CLI or JavaScript SDK. To get started, install the Board skill: Or paste this into your agent: , or learn more in the . Read the announcementVercel Board documentation Read more Each task’s discussion and results kept together in one thread. Control over which channels agents and users can access and what they can do. Messages and replies that sync both ways with Slack, GitHub, and other tools through .Vercel Connect"
+    },
+    {
+      "id": "https://vercel.com/blog/vercel-x",
+      "title": "Introducing Vercel X",
+      "url": "https://vercel.com/blog/vercel-x",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-18T00:00:00.000Z",
+      "text": "Today we’re launching , a six-week accelerator for AI founders at the idea and pre-seed stages.Vercel X Join a cohort of 40 teams at our San Francisco HQ and build alongside Vercel’s product leaders, designers, and engineers. The program takes no equity for participation and offers access to a program-wide pool of more than $9M in credits from Vercel, AWS, Anthropic, OpenAI, and other partners. Applications are now open through November 29, 2026. The program runs from January 19 to March 2, 2027. Vercel has worked with more than 100 early-stage teams from around the world across three accelerator cohorts. Alumni include , Alloy Robotics, , , and . Interfaze and Rex are backed by Y Combinator, and Cervo was acquired by Altana Technologies.RexInterfazeCervoHacktron If you’re applying to Vercel X, you probably have an idea or project you haven’t been able to stop thinking about. The next stretch is figuring out exactly what you’re building and who it’s for. We think you get through that stretch the Vercel way: by deeply understanding your customers, shipping quickly, and iterating to greatness. The program includes: Winning teams receive funding from Vercel Ventures and prizes from pr"
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-drives-now-reads-files-up-to-6x-faster",
+      "title": "Vercel Drives now reads files up to 6x faster",
+      "url": "https://vercel.com/changelog/vercel-drives-now-reads-files-up-to-6x-faster",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-18T00:00:00.000Z",
+      "text": "now reads files up to 6x faster.Vercel Drives The update improves cold-read performance. A new read-ahead algorithm uses your application’s access patterns to load data from persistent storage before it’s needed, reducing the time your code spends waiting. All drives get this update automatically, with no SDK upgrade or configuration changes required. Read pricing is unchanged. Learn more in the .Vercel Drives documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/single-second-static-deployments-now-support-more-assets",
+      "title": "Single-second static deployments now support more assets",
+      "url": "https://vercel.com/changelog/single-second-static-deployments-now-support-more-assets",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-18T00:00:00.000Z",
+      "text": "let you deploy eligible static sites to Vercel in about a second, without a build step. They now support CSS, images, fonts, and other assets alongside HTML and Markdown.Instant deployments Deploy a landing page with its stylesheet and images, or a report created by your coding agent, through the or . With the CLI, run:Vercel CLIREST API Newly supported file types include: Instant deployments support up to 100 files totaling 25 MB or less. Vercel detects eligible deployments automatically, with no configuration required. Deployments that exceed these limits, include JavaScript or other unsupported files, or are triggered by Git still build as before. The same applies to projects with a framework preset, custom build settings, a root-level or Vercel configuration file such as , or a directory.package.jsonvercel.jsonpublic/ This update is rolling out across all plans. Learn more in the .deployment documentation Read more CSS, JSON, XML, plain text, and web manifestsStyles and data: SVG, PNG, JPEG, GIF, WebP, AVIF, and ICOImages: WOFF, WOFF2, TTF, OTF, and EOTFonts: PDF, MP4, WebM, MP3, WAV, and OGGDocuments and media:"
+    },
+    {
+      "id": "https://socket.dev/blog/mitre-cve-timestamp-issues?utm_medium=feed",
+      "title": "MITRE Acknowledges Inaccurate Publication Timestamps in 87% of Its Recent CVE Records",
+      "url": "https://socket.dev/blog/mitre-cve-timestamp-issues?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-18T19:38:28.084Z",
+      "text": "MITRE has acknowledged that a legacy publishing system is responsible for inaccurate timestamps in thousands of CVE records, following research showing that 87% of the organization's CVEs published over the past year were assigned a publication time of exactly midnight UTC. MITRE says the legacy system responsible for the problem will be phased out in the first quarter of 2027. The findings come from security researcher Jerry Gamblin, founder of RogoLabs, an independent open source research lab focused on vulnerability intelligence. His projects include the CNA Scorecard, which evaluates the completeness of CVE records, and CNAPulse, which tracks vulnerability publishing activity across CVE Numbering Authorities (CNAs). Socket has previously covered both projects and Gamblin's broader research into CVE data quality. Analyzing CVE records published over the 52 weeks ending November 16, 2026, Gamblin found that 3,901 of MITRE's 4,509 CVEs (87%) had a datePublished timestamp of exactly 00:00:00.000Z. Across the other 425 CNAs, none of the 100,235 records carried that same timestamp. The distribution creates the appearance that MITRE publishes hundreds of vulnerability records at preci"
+    },
+    {
+      "id": "dev:5062324",
+      "title": "Next.js use cache Reused the Same Cache Entry for Different Files Before 16.4.5",
+      "url": "https://dev.to/shubhradev/nextjs-use-cache-reused-the-same-cache-entry-for-different-files-before-1645-598g",
+      "link": "https://shubhra.dev/tutorials/nextjs-use-cache-key",
+      "source": "DEV Community",
+      "category": "Next.js",
+      "kind": "community",
+      "date": "2026-11-18T14:38:57.000Z",
+      "text": "The Next.js docs tell you that the serializable arguments you pass to a use cache function become...",
+      "score": 26,
+      "comments": 11
+    }
+  ]
+}
