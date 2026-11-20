@@ -1,0 +1,172 @@
+{
+  "date": "2026-11-20",
+  "items": [
+    {
+      "id": "GHSA-f3mh-rxg3-f5g2",
+      "title": "Next.js: HttpOnly cookie exposure through internal response header on Next.js Edge runtime routes",
+      "url": "https://github.com/advisories/GHSA-f3mh-rxg3-f5g2",
+      "source": "GitHub Advisory",
+      "category": "Next.js",
+      "kind": "security",
+      "date": "2026-11-19T22:23:21.000Z",
+      "text": "Next.js applications that set cookies through `NextResponse` on Edge runtime routes — App Router route handlers and Pages Router Edge API routes — send an internal `x-middleware-set-cookie` header in the public response, duplicating the cookie value and its attributes. This makes HttpOnly cookies, such as session tokens, readable by JavaScript running on the same origin when an application sets a sensitive cookie on an affected response.",
+      "severity": "medium",
+      "cvss": 6,
+      "cve": "CVE-2026-119346",
+      "affected": [
+        "next >= 15.0.0, <= 15.5.28",
+        "next >= 16.0.0, <= 16.4.4"
+      ],
+      "patched": [
+        "15.5.29",
+        "16.4.5"
+      ]
+    },
+    {
+      "id": "GHSA-7qx7-33qx-rqx2",
+      "title": "Next.js: SVG rejection bypass in the image optimization",
+      "url": "https://github.com/advisories/GHSA-7qx7-33qx-rqx2",
+      "source": "GitHub Advisory",
+      "category": "Next.js",
+      "kind": "security",
+      "date": "2026-11-19T22:23:06.000Z",
+      "text": "On self-hosted deployments, the Next.js image optimizer (`/_next/image`) can be made to process an attacker-supplied SVG even when SVG support is disabled with `dangerouslyAllowSVG: false` (the default). This reaches an SVG parser the application intended to keep disabled, increasing exposure to denial of service and SVG decoder vulnerabilities.",
+      "severity": "medium",
+      "cvss": 6.9,
+      "cve": "CVE-2026-119347",
+      "affected": [
+        "next >= 15.0.0, <= 15.5.28",
+        "next >= 16.0.0, <= 16.4.4"
+      ],
+      "patched": [
+        "15.5.29",
+        "16.4.5"
+      ]
+    },
+    {
+      "id": "GHSA-pc58-hwjq-p385",
+      "title": "Next.js: Cross-client response injection and disclosure in self-hosted Next.js applications forwarding fetched responses",
+      "url": "https://github.com/advisories/GHSA-pc58-hwjq-p385",
+      "source": "GitHub Advisory",
+      "category": "Next.js",
+      "kind": "security",
+      "date": "2026-11-19T22:20:34.000Z",
+      "text": "Self-hosted Next.js applications (App Router route handlers and the fetch cache) that return a fetched upstream response unchanged can emit a response whose declared framing does not match the body actually sent. When such an application sits behind an HTTP/1.1 reverse proxy that permits pipelined response queueing, a crafted upstream response can desynchronize responses between clients, enabling response injection and disclosure of other clients' responses.",
+      "severity": "medium",
+      "cvss": 6.3,
+      "cve": "CVE-2026-119348",
+      "affected": [
+        "next >= 16.0.0, <= 16.4.4",
+        "next <= 15.5.28"
+      ],
+      "patched": [
+        "16.4.5",
+        "15.5.29"
+      ]
+    },
+    {
+      "id": "GHSA-rhh4-g77r-r9qj",
+      "title": "Next.js: Cross-user cache disclosure and poisoning in Next.js use cache with binary arguments",
+      "url": "https://github.com/advisories/GHSA-rhh4-g77r-r9qj",
+      "source": "GitHub Advisory",
+      "category": "Next.js",
+      "kind": "security",
+      "date": "2026-11-19T22:20:11.000Z",
+      "text": "Next.js App Router applications that pass binary arguments (such as Uint8Array or Blob values) to functions using the `use cache` directive can produce identical cache keys for distinct arguments, allowing cached results to be shared across users — cross-user disclosure of cached data or cache poisoning. This affects applications using `use cache` with binary arguments.",
+      "severity": "medium",
+      "cvss": 6.3,
+      "cve": "CVE-2026-119349",
+      "affected": [
+        "next >= 16.0.0, <= 16.4.4"
+      ],
+      "patched": [
+        "16.4.5"
+      ]
+    },
+    {
+      "id": "GHSA-vvgp-ww4w-46vf",
+      "title": "Next.js: Cache poisoning of shared fallback shells in Cache Components via request-supplied placeholder route params",
+      "url": "https://github.com/advisories/GHSA-vvgp-ww4w-46vf",
+      "source": "GitHub Advisory",
+      "category": "Next.js",
+      "kind": "security",
+      "date": "2026-11-19T22:18:08.000Z",
+      "text": "Self-hosted Next.js applications served with `next start` and built with `cacheComponents: true` but without Partial Prefetching accept a request-supplied route param value as a prerender placeholder. One unauthenticated GET request can poison the fallback shell cache entry that a family of routes shares. Such a route is served from a shell that keeps its never-prerenderable params as placeholders, so every value of those params shares one cache entry. A path segment equal to the percent-encoded, bracketed name of its own route param is treated as an unresolved placeholder, and only that param is deferred. A layout above it then renders its concrete value into the shell during the blocking render, and the result, including its HTTP status, is stored under the shared key. Depending on the application, the stored entry is one of the following: - A persistent 404, when the layout rejects the value with `notFound()`: served to every URL under the shell key with `\"revalidate\": false`, across server restarts, with no error logged. - A substituted param value, when the layout renders the value: the server-rendered HTML renders the attacker's value for that param in place of the visitor's ",
+      "severity": "medium",
+      "cvss": 6.3,
+      "cve": "CVE-2026-119350",
+      "affected": [
+        "next >= 16.4.0, <= 16.4.4"
+      ],
+      "patched": [
+        "16.4.5"
+      ]
+    },
+    {
+      "id": "https://vercel.com/changelog/vercel-billing-cli-is-now-available",
+      "title": "Vercel Billing CLI is now available",
+      "url": "https://vercel.com/changelog/vercel-billing-cli-is-now-available",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-19T05:00:00.000Z",
+      "text": "You can now check your team’s billing overview, review and download invoices, and preview upcoming charges with the . All billing commands, including usage, contracts, and budgets, are now grouped under .Vercel CLIvercel billing Billing overview and invoice history are available on all plans, subject to your team’s existing billing permissions. Upcoming invoice estimates require an active paid subscription. Check your team’s plan, billing status, billing cycle, balance due, and overdue invoices: In CLI 65.17.0 and later, this overview also includes configured invoice details such as your billing address, tax ID, and purchase order. Use to review invoices, download PDFs, and preview upcoming charges. For and , replace with a full invoice ID from the output:vercel billing invoicesinspectdownload list Upcoming charges are estimates and may change until the end of the billing period. For scripts and agents, add to or any subcommand for structured output.--jsonvercel billing overviewvercel billing invoices Existing usage, contract, and budget commands now also use the same prefix: The previous command names continue to work as aliases. To get started, with . Learn more in the .update yo"
+    },
+    {
+      "id": "4875c8b1-2cda-45fa-a272-c23810c756e1",
+      "title": "Agentic Workflows with Expo Simulators",
+      "url": "https://expo.dev/blog/agentic-workflows-with-expo-simulators",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-19T17:45:00.000Z",
+      "text": "Three agentic workflows with Expo Simulators: event triggers, a pull request assistant, and QA swarms, each with evidence your team can review."
+    },
+    {
+      "id": "https://swmansion.com/blog/shared-element-transitions-in-reanimated-4-8-0/",
+      "title": "Shared Element Transitions in Reanimated 4.8.0",
+      "url": "https://swmansion.com/blog/shared-element-transitions-in-reanimated-4-8-0/",
+      "source": "Software Mansion Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-19T00:00:00.000Z",
+      "text": "Reanimated 4.8.0 brings Shared Element Transitions with SharedTransitionBoundary and fadeContent, plus Animated Text and new CSS animation features."
+    },
+    {
+      "id": "https://socket.dev/blog/hardening-github-actions-against-insider-threats?utm_medium=feed",
+      "title": "Hardening GitHub Actions Against Insider Threats",
+      "url": "https://socket.dev/blog/hardening-github-actions-against-insider-threats?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-19T19:17:08.445Z",
+      "text": "Part one of this series covered attackers with no credential for your organization, who reach the pipeline through a pull request, a dependency or a third-party action. Those controls are largely deterministic. Pin an action to a commit SHA and a retagged action cannot run. This post covers the other half, and it behaves differently. Here the attacker presents a valid credential. Either a maintainer's account, token or session has been stolen, or a person with legitimate access is acting against the project. Several of the largest incidents of 2026 fall into this category, and they didn't need to exploit a vulnerability to gain access. To GitHub, npm, and your cloud provider, the attacker's requests were indistinguishable from normal work. No input validation would have rejected them, because nothing about them was malformed. That changes what the controls in this post can promise. They cannot prevent every maintainer account takeover — chapter 10's phishing-resistant factors do break one common entry route, but nothing here stops a credential that leaks some other way. What these ten chapters do is shrink the blast radius, raise the number of independently protected things an atta"
+    },
+    {
+      "id": "dev:5055968",
+      "title": "How to Add Login, SSO, and MFA to a Next.js SaaS with Managed Keycloak",
+      "url": "https://dev.to/hadil/how-to-add-login-sso-and-mfa-to-a-nextjs-saas-with-managed-keycloak-56dj",
+      "link": null,
+      "source": "DEV Community",
+      "category": "Next.js",
+      "kind": "community",
+      "date": "2026-11-19T13:49:45.000Z",
+      "text": "Keycloak authentication for Next.js gives SaaS teams a way to add secure login, enterprise Single...",
+      "score": 34,
+      "comments": 2
+    },
+    {
+      "id": "dev:5058147",
+      "title": "Stop Wrapping Everything in Promise.all: How Unbounded Concurrency Crashes APIs",
+      "url": "https://dev.to/johnnylemonny/stop-wrapping-everything-in-promiseall-how-unbounded-concurrency-crashes-apis-11ol",
+      "link": null,
+      "source": "DEV Community",
+      "category": "Node.js",
+      "kind": "community",
+      "date": "2026-11-19T16:30:00.000Z",
+      "text": "Promise.all fires every async task on the same event-loop tick. Learn why unbounded concurrency causes 429 storms and how to fix it with a bounded worker pool.",
+      "score": 24,
+      "comments": 13
+    }
+  ]
+}
