@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-21",
+  "items": [
+    {
+      "id": "https://vercel.com/changelog/vercel-functions-now-support-request-bodies-up-to-20mib",
+      "title": "Vercel Functions now support request bodies up to 20MiB",
+      "url": "https://vercel.com/changelog/vercel-functions-now-support-request-bodies-up-to-20mib",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-20T13:00:00.000Z",
+      "text": "now accept inbound request bodies up to 20MiB, up from 4.5MB, in Public Beta.Vercel Functions To turn this on, set the environment variable. The opt-in applies to the whole project in the environment where you set it, so you can test the larger limit on preview before enabling it in production. It requires the project's functions to use the performance memory setting of 4GB. It applies to functions on the Node.js, Python, and Bun runtimes, and to Routing Middleware. Functions and Routing Middleware on the Edge runtime keep the 4.5MB cap and return 413 on oversize bodies, so moving them onto the larger limit means switching to the Node.js runtime with , or in Next.js.VERCEL_SUPPORT_LARGE_REQUEST_BODY=1runtime: 'nodejs'proxy.ts When a project opts in, Routing Middleware receives request headers and metadata but no request body, enforced at the project level. Middleware still runs and still sees every other request header, so body-dependent middleware behavior is the one thing that becomes unavailable. This avoids sending the body twice, to both middleware and the target function, which would raise cost and time to first byte. When handling larger request bodies, read the body promptl"
+    },
+    {
+      "id": "https://vercel.com/blog/vercel-completes-iso-iec-42001-2023-certification",
+      "title": "Vercel completes ISO/IEC 42001:2023 certification",
+      "url": "https://vercel.com/blog/vercel-completes-iso-iec-42001-2023-certification",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-20T05:00:00.000Z",
+      "text": "Vercel has completed its ISO/IEC 42001:2023 certification, meeting the international standard for AI management systems. This certification gives our customers confidence to ship fast with agents on Vercel, demonstrating how Vercel designs, builds, operates, and governs our AI products. Our AI management system covers Vercel’s underlying infrastructure and core AI products, including AI Gateway, Vercel Agent, v0, AI-based open source software and frameworks, as well as the people and processes behind them. Vercel’s certificate is available , and additional audit documentation is available through our .hereTrust Center ISO/IEC 42001:2023 is the international standard for and applies to any organization that develops, provides, or uses AI.AI management systems An AI management system is the set of policies, roles, processes, and controls through which an organization consistently governs AI activities. The standard includes requirements for leadership accountability, AI risk assessment, lifecycle management, data governance, transparency, and continual improvement. The requirement that makes ISO 42001 distinct from security standards is the AI system impact assessment. Security frame"
+    }
+  ]
+}
