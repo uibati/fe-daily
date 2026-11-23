@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-23",
+  "items": [
+    {
+      "id": "https://vercel.com/changelog/catch-missing-feature-flags-before-they-reach-production",
+      "title": "Catch missing feature flags before they reach production",
+      "url": "https://vercel.com/changelog/catch-missing-feature-flags-before-they-reach-production",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-23T05:00:00.000Z",
+      "text": "can now block a deployment from reaching production if you’ve declared a flag in code but haven’t created it in your project. Without that definition, your app can silently fall back to the flag’s default value, even if that turns on a feature you meant to keep off.Vercel Flags The runs when a deployment is ready. If any flags are missing, the check fails and lists them in the results, where you can create each one before redeploying.Flag Definitions PresentDeployment Check The check reads your discovery endpoint and requires to be set in your project’s environment.Flags SDKFLAGS_SECRET To turn on blocking, teams on all plans can enable the check in their project’s and mark it as required. See the for setup details.Build and Deployment settingsDeployment Checks documentation Read more"
+    },
+    {
+      "id": "dev:5092902",
+      "title": "Glint: type and speak with your eyebrows and your breath",
+      "url": "https://dev.to/yashksaini/glint-type-and-speak-with-your-eyebrows-and-your-breath-569o",
+      "link": null,
+      "source": "DEV Community",
+      "category": "Node.js",
+      "kind": "community",
+      "date": "2026-11-22T09:56:42.000Z",
+      "text": "This is a submission for the Presage SmartSpectra SDK Challenge What I Built Glint is an...",
+      "score": 20,
+      "comments": 4
+    }
+  ]
+}
