@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-25",
+  "items": [
+    {
+      "id": "https://vercel.com/changelog/standard-builds-for-existing-pro-teams-have-moved-to-usage-based-billing",
+      "title": "Standard builds for existing Pro teams have moved to usage-based billing",
+      "url": "https://vercel.com/changelog/standard-builds-for-existing-pro-teams-have-moved-to-usage-based-billing",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-25T08:00:00.000Z",
+      "text": "Existing Pro teams will no longer include a Standard build slot. This brings Standard builds under the same usage-based billing model as other build machines. Standard builds cost $0.014 per build minute, and your monthly usage credit applies to build usage. Billing applies to all projects on the team. See included and Standard build minutes for your team on the . Select a build machine in or .Usage pageteam settingsproject settings To learn more, read more about .managing your builds Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/all-sandbox-runtimes-now-use-vercel-managed-images",
+      "title": "All Sandbox runtimes now use Vercel Managed Images",
+      "url": "https://vercel.com/changelog/all-sandbox-runtimes-now-use-vercel-managed-images",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-24T18:00:00.000Z",
+      "text": "All runtimes now use Vercel Managed Images (VMIs).Vercel Sandbox Legacy runtimes, such as , now use the open-source images in the , distributed through Vercel Container Registry (VCR). Sandboxes created with these now come with 64 GB of storage and use the same infrastructure as sandboxes powered by VCR.node22vercel/sandbox repository The universal image is released nightly, and rolling tags such as pick up operating system, dependency, and coding agent updates. Pin an image digest when you need a reproducible environment.latest Sandboxes created with version 3 or later of the JavaScript Sandbox SDK use by default. The universal image includes Node.js, Python, coding agents such as Claude Code and Pi, and common utilities. You can pull it at .vercel/sandbox/universal:latestvcr.vercel.com/vercel/sandbox/universal:latest Learn more in the .Sandbox documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/aws-privatelink-endpoints-are-now-available-on-secure-compute",
+      "title": "AWS PrivateLink endpoints are now available on Secure Compute",
+      "url": "https://vercel.com/changelog/aws-privatelink-endpoints-are-now-available-on-secure-compute",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-24T09:54:00.000Z",
+      "text": "Enterprise teams using can now create and manage endpoints directly from the Vercel dashboard.Secure ComputeAWS PrivateLink Endpoints on Secure Compute live in your team's dedicated VPC and use the network's AWS region. They belong to the network and are shared by its connected project environments. , , and builds connected to the network can reach AWS-hosted backends over the AWS private network. Before you add an endpoint in Vercel, the backend must already be exposed through a published AWS PrivateLink endpoint service. Examples include RDS, Aurora, Redshift, Snowflake, MongoDB Atlas, and internal services behind a Network Load Balancer.Vercel FunctionsVercel Sandbox In Team Settings → , open your Secure Compute network and choose from the tab.NetworkingAdd EndpointPrivateLink Standard pricing for new endpoints: Read the to get started.Secure Compute PrivateLink documentation Read more Each Secure Compute network includes one AWS PrivateLink endpoint. Additional endpoints cost $30 per month each. PrivateLink data transfer costs $0.04 per GB."
+    },
+    {
+      "id": "https://vercel.com/changelog/flags-sdk-now-works-on-vercel-without-flags-secret",
+      "title": "Flags SDK now works on Vercel without FLAGS_SECRET",
+      "url": "https://vercel.com/changelog/flags-sdk-now-works-on-vercel-without-flags-secret",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-24T05:00:00.000Z",
+      "text": "With , projects on Vercel can use and precompute without . That cuts out a setup step for new projects and removes the need to keep a shared secret in sync across microfrontends. flags@4.5.0Flags ExplorerFLAGS_SECRET Vercel signs Flags Explorer discovery requests and overrides, and the SDK encrypts flag values shown in the Vercel Toolbar with Vercel’s public key. Existing projects keep using while the environment variable is set or the secret is passed in code. Upgrading alone doesn't switch them to Vercel-managed keys. To use Vercel-managed keys for these features, remove the environment variable and any code that passes the secret explicitly. For local development, run .FLAGS_SECRETvercel env pull Precomputed codes created without a secret work only in the deployment that created them. Precompute without a secret requires Vercel system environment variables, which are enabled by default. Prebuilt deployments and codes that must work across deployments still need a secret; use if only precompute needs one. If you use a build cache, see the for the required configuration.FLAGS_PRECOMPUTE_SECRETprecompute documentation Learn more in the .Flags SDK documentation Read more"
+    },
+    {
+      "id": "https://vercel.com/changelog/delete-run-data-workflow-sdk",
+      "title": "Delete a run's data on demand in Workflow SDK",
+      "url": "https://vercel.com/changelog/delete-run-data-workflow-sdk",
+      "source": "Vercel Blog",
+      "category": "Next.js",
+      "kind": "blog",
+      "date": "2026-11-24T05:00:00.000Z",
+      "text": "The now lets you delete a finished run's stored data on demand. This feature gives you the ability to quickly meet compliance and security requirements when sensitive data needs to be purged from run payloads.Workflow SDK Deleting a run's data deletes any inputs, outputs, hook payloads, and error traces for the run and its related entities. This does delete the run's : the run is still listed in observability. Attributes, hook tokens, and timings for steps and events can still be inspected.notmetadata You can delete a run's data from the Vercel Dashboard, or via the CLI: You can also delete a run's data programmatically from your code: Deletion applies to finished runs only, so a run that is still going is skipped and keeps running. If you want to delete a run's payload as soon as it finishes, use the instead.retention settings Upgrade to or higher to use this feature. Learn more in the .workflow@5.7.0 referencedeleteRuns() Read more"
+    },
+    {
+      "id": "post-expo-app-awards-2026-winners",
+      "title": "Announcing the Expo App Awards 2026 winners",
+      "url": "https://expo.dev/blog/expo-app-awards-2026-winners",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-24T19:00:14.000Z",
+      "text": "Meet the winners of the Expo App Awards 2026, picked from 1,487 submissions, plus every nominee across all five categories."
+    },
+    {
+      "id": "https://socket.dev/blog/free-patches-critical-ruby-cves?utm_medium=feed",
+      "title": "Socket Releases Free Patches for 100% of Critical CVEs in RubyGems",
+      "url": "https://socket.dev/blog/free-patches-critical-ruby-cves?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-24T18:27:14.893Z",
+      "text": "We've completed security patches for 100% of patchable critical-severity CVEs in the RubyGems ecosystem, and we're making those fixes available to everyone for free. Developers can now remediate these vulnerabilities without upgrading their existing dependency versions, even when an upstream fix requires a breaking change. The milestone follows an intensive engineering sprint focused on expanding RubyGems patch coverage. During the effort, our team also made substantial improvements to the systems used to generate, test, validate, and publish security fixes. Socket identifies six critical vulnerabilities with available patches in a sample Ruby project. # Upgrading to a secure upstream version is generally the simplest way to address a vulnerability. But upgrades aren't always straightforward, particularly for applications that depend on older versions of libraries. Some Ruby applications have been running for a decade or longer and still serve important functions. Their dependencies may have been abandoned, or upgrading to a supported version may require substantial changes to the application itself. In some cases, a compatible upstream fix simply doesn't exist. Socket Certified Pa"
+    },
+    {
+      "id": "dev:5103102",
+      "title": "Building an offline-first React Native app with Turso Sync, Measure and Claude Code",
+      "url": "https://dev.to/studio1hq/building-an-offline-first-react-native-app-with-turso-sync-measure-and-claude-code-fa5",
+      "link": null,
+      "source": "DEV Community",
+      "category": "React Native",
+      "kind": "community",
+      "date": "2026-11-24T14:56:34.000Z",
+      "text": "TL;DR I built SyncNote, an offline-first notes app in React Native and Expo. Turso Sync...",
+      "score": 22,
+      "comments": 3
+    }
+  ]
+}
