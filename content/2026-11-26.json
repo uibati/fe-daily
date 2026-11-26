@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-26",
+  "items": [
+    {
+      "id": "https://github.com/vercel/next.js/releases/tag/v16.5.0-preview.0",
+      "title": "v16.5.0-preview.0",
+      "url": "https://github.com/vercel/next.js/releases/tag/v16.5.0-preview.0",
+      "source": "Next.js Releases",
+      "category": "Next.js",
+      "kind": "release",
+      "date": "2026-11-26T10:36:43.000Z",
+      "text": "v16.5.0-preview.0"
+    },
+    {
+      "id": "https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.2.0",
+      "title": "2026-11-26, Version 27.0.0-alpha.0.2.0 (Alpha), @aduh95",
+      "url": "https://github.com/nodejs/node/releases/tag/v27.0.0-alpha.0.2.0",
+      "source": "Node.js Releases",
+      "category": "Node.js",
+      "kind": "release",
+      "date": "2026-11-26T10:29:06.000Z",
+      "text": "Notable Changes [79db466ecc] - doc: deprecate util.TextDecoder and util.TextEncoder (LiviaMedeiros) #67461 [ba3e5c93a3] - (SEMVER-MINOR) http2: add writeProcessing to compat response (Yuya Inoue) #67728 [bdd02b128c] - (SEMVER-MINOR) http2: add missing setHeaders (jakecastelli) #67597 [0a67a05d22] - (SEMVER-MINOR) http2: add callback to informational header methods (Yuya Inoue) #67470 [c47d2564bb] - (SEMVER-MINOR) lib: graduate the --process-timeout option (James M Snell) #67506 [610b9fa65f] - (SEMVER-MINOR) os: expose guessFileDescriptorType (Vlad Frangu) #58060 [eae0633ec9] - (SEMVER-MINOR) sqlite: throw ERR_NO_SQLITE without SQLite support (Christian Aurich Zanettini Martins) #67727 [610491c77a] - (SEMVER-MINOR) sqlite: add statement.columnCount getter (Guilherme Araújo) #67658 [76aaaca9e6] - sqlite: mark as stable (Christian Aurich Zanettini Martins) #67654 [6dc819754e] - (SEMVER-MINOR) src: expand --process-timeout output to include workers (James M Snell) #67712 [a6fc41c2fc] - (SEMVER-MINOR) src: restore tty state on exit only if changed (Matteo Collina) #66753 [4f880d0604] - (SEMVER-MINOR) tls: docs-deprecate TLS renegotiation, add allowRenegotiation opt-in (Tim Perry) #67532"
+    },
+    {
+      "id": "/blog/release/v27.0.0-alpha.0.2.0?1795689016201",
+      "title": "Node.js 27.0.0-alpha.0.2.0 (Alpha)",
+      "url": "https://nodejs.org/en/blog/release/v27.0.0-alpha.0.2.0",
+      "source": "Node.js Blog",
+      "category": "Node.js",
+      "kind": "blog",
+      "date": "2026-11-26T10:30:16.000Z",
+      "text": ""
+    },
+    {
+      "id": "https://socket.dev/blog/eliminating-vulnerabilities-without-upgrading-dependencies?utm_medium=feed",
+      "title": "Risky Biz Podcast: Eliminating Vulnerabilities Without Upgrading Dependencies",
+      "url": "https://socket.dev/blog/eliminating-vulnerabilities-without-upgrading-dependencies?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-25T22:50:32.756Z",
+      "text": "Risky Biz Podcast: Eliminating Vulnerabilities Without Upgrading Dependencies Security teams are often responsible for remediating vulnerabilities in applications that no longer have engineering resources assigned to them. Even a minor dependency upgrade can introduce performance regressions, break production services, or require extensive regression testing. Meanwhile, attackers are exploiting newly disclosed vulnerabilities faster than organizations can respond. In a new Risky Business sponsor interview, Socket founder and CEO Feross Aboukhadijeh joins James to discuss Socket's ambition to eliminate every patchable open source vulnerability and how advances in AI are making that possible at scale. The conversation explores how Socket delivers security fixes for the exact dependency versions organizations already run, without requiring upgrades or introducing breaking API changes. James presses Feross on some of the harder technical questions behind this approach: How do you safely backport a security fix across multiple generations of a package? How can testing the thousands of packages that depend on a vulnerable library help validate a fix? Can AI make comprehensive CVE remedia"
+    },
+    {
+      "id": "https://socket.dev/blog/socket-syntax-highlighting-theme?utm_medium=feed",
+      "title": "Introducing Socket Calm: A Syntax Highlighting Theme for VS Code, Vim, and Neovim",
+      "url": "https://socket.dev/blog/socket-syntax-highlighting-theme?utm_medium=feed",
+      "source": "Socket.dev Blog",
+      "category": "Diğer",
+      "kind": "security-blog",
+      "date": "2026-11-25T18:52:26.336Z",
+      "text": "We're bringing a little bit of Socket's design system to your code editor. Today we're releasing Socket Calm, a free, open source syntax highlighting theme for VS Code, Vim, and Neovim. The theme borrows from a principle behind Socket's own interface design: use color with intention and reserve stronger visual cues for things that need your attention. The name Calm also captures what we want our products to bring to developers: peace of mind in an increasingly hostile software supply chain. Socket Calm takes a minimalist approach to syntax highlighting with a six-color palette. Operators, punctuation, and variables retain the default foreground color, while keywords, function calls, strings, keys, and literals are distinguished by color. Additional accents are reserved for diagnostics, Git decorations, diffs, and terminal output. The theme comes in two variants, featuring the warm plum and sand backgrounds from Socket's design system, with semantic highlighting enabled by default. Socket Calm Dark Socket Calm Light # VS Code users can install Socket Calm directly from the Visual Studio Marketplace and select either the light or dark variant. Socket Calm is also available as a stand"
+    },
+    {
+      "id": "dev:5115821",
+      "title": "What server.close() Misses in Node.js Graceful Shutdown",
+      "url": "https://dev.to/shubhradev/what-serverclose-misses-in-nodejs-graceful-shutdown-4ech",
+      "link": "https://shubhra.dev/blog/nodejs-graceful-shutdown",
+      "source": "DEV Community",
+      "category": "Node.js",
+      "kind": "community",
+      "date": "2026-11-25T15:19:41.000Z",
+      "text": "My default Node.js graceful shutdown was short. Listen for SIGTERM, call server.close(), wait for the...",
+      "score": 30,
+      "comments": 6
+    }
+  ]
+}
