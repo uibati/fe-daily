@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-27",
+  "items": [
+    {
+      "id": "post-ship-to-production-from-your-phone",
+      "title": "Can you confidently ship to production from your phone?",
+      "url": "https://expo.dev/blog/ship-to-production-from-your-phone",
+      "source": "Expo Blog",
+      "category": "React Native",
+      "kind": "blog",
+      "date": "2026-11-26T20:30:00.000Z",
+      "text": "Describe a bug in a chat on your phone, check the fix on a cloud iPhone, and ship it as an over-the-air update. Here is the setup, step by step."
+    },
+    {
+      "id": "dev:5124260",
+      "title": "Build a ToolJet App from a Figma Design with AI Builder",
+      "url": "https://dev.to/tooljet/build-a-tooljet-app-from-a-figma-design-with-ai-builder-2fbb",
+      "link": "https://blog.tooljet.com/build-tooljet-app-from-figma-design-ai-builder/",
+      "source": "DEV Community",
+      "category": "React",
+      "kind": "community",
+      "date": "2026-11-26T12:14:28.000Z",
+      "text": "Attach a Figma PNG to ToolJet AI Builder, paste one prompt, and it builds a working React Builder app...",
+      "score": 33,
+      "comments": 0
+    }
+  ]
+}
