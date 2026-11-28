@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-28",
+  "items": [
+    {
+      "id": "https://github.com/vercel/next.js/releases/tag/v16.6.0-rc.0",
+      "title": "v16.6.0-rc.0",
+      "url": "https://github.com/vercel/next.js/releases/tag/v16.6.0-rc.0",
+      "source": "Next.js Releases",
+      "category": "Next.js",
+      "kind": "release",
+      "date": "2026-11-28T10:37:18.000Z",
+      "text": "v16.6.0-rc.0"
+    },
+    {
+      "id": "dev:5133809",
+      "title": "How to Add Crash Reporting and Session Replay to a React Native App",
+      "url": "https://dev.to/studio1hq/how-to-add-crash-reporting-and-session-replay-to-a-react-native-app-bgh",
+      "link": null,
+      "source": "DEV Community",
+      "category": "React Native",
+      "kind": "community",
+      "date": "2026-11-27T18:32:48.000Z",
+      "text": "A user opens a note, starts typing, and the app closes. When they reopen it, the text they typed is...",
+      "score": 20,
+      "comments": 0
+    }
+  ]
+}
